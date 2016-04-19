@@ -38,6 +38,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDialog_Bici = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jDialog_Conductores = new javax.swing.JDialog();
+        btn_verConductores = new javax.swing.JButton();
+        jDialog_Buses = new javax.swing.JDialog();
+        btn_verBuses = new javax.swing.JButton();
+        btn_verRutaA = new javax.swing.JButton();
+        btn_verRutaB = new javax.swing.JButton();
+        btn_verRutaC = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jDialog_Transfers = new javax.swing.JDialog();
+        btn_verTransfers = new javax.swing.JButton();
+        btn_reservarTransfer = new javax.swing.JButton();
+        jDialog_Clientes = new javax.swing.JDialog();
+        btn_verClientes = new javax.swing.JButton();
         JDConductores = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -84,7 +97,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
 
         jDialog_Bici.setTitle("Bici-ágil");
-        jDialog_Bici.setMinimumSize(new java.awt.Dimension(300, 200));
+        jDialog_Bici.setMinimumSize(new java.awt.Dimension(300, 126));
+        jDialog_Bici.setResizable(false);
 
         jButton1.setText("Ver bicicletas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -102,8 +116,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_BiciLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jDialog_BiciLayout.setVerticalGroup(
@@ -111,8 +125,175 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_BiciLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialog_Conductores.setTitle("Conductores");
+        jDialog_Conductores.setIconImage(null);
+        jDialog_Conductores.setMinimumSize(new java.awt.Dimension(300, 83));
+        jDialog_Conductores.setResizable(false);
+        jDialog_Conductores.setSize(new java.awt.Dimension(300, 83));
+
+        btn_verConductores.setText("Ver lista de conductores");
+        btn_verConductores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verConductoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog_ConductoresLayout = new javax.swing.GroupLayout(jDialog_Conductores.getContentPane());
+        jDialog_Conductores.getContentPane().setLayout(jDialog_ConductoresLayout);
+        jDialog_ConductoresLayout.setHorizontalGroup(
+            jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDialog_ConductoresLayout.setVerticalGroup(
+            jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialog_Buses.setTitle("Buses");
+        jDialog_Buses.setMinimumSize(new java.awt.Dimension(300, 156));
+        jDialog_Buses.setResizable(false);
+        jDialog_Buses.setSize(new java.awt.Dimension(300, 156));
+
+        btn_verBuses.setText("Ver lista de buses");
+        btn_verBuses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verBusesActionPerformed(evt);
+            }
+        });
+
+        btn_verRutaA.setText("Ruta A");
+        btn_verRutaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verRutaAActionPerformed(evt);
+            }
+        });
+
+        btn_verRutaB.setText("Ruta B");
+        btn_verRutaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verRutaBActionPerformed(evt);
+            }
+        });
+
+        btn_verRutaC.setText("Ruta C");
+        btn_verRutaC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verRutaCActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Ver buses en tiempo real");
+
+        javax.swing.GroupLayout jDialog_BusesLayout = new javax.swing.GroupLayout(jDialog_Buses.getContentPane());
+        jDialog_Buses.getContentPane().setLayout(jDialog_BusesLayout);
+        jDialog_BusesLayout.setHorizontalGroup(
+            jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_BusesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog_BusesLayout.createSequentialGroup()
+                        .addComponent(btn_verBuses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jDialog_BusesLayout.createSequentialGroup()
+                        .addComponent(btn_verRutaA, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addComponent(btn_verRutaB, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_verRutaC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog_BusesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(89, 89, 89))
+        );
+        jDialog_BusesLayout.setVerticalGroup(
+            jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_BusesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verBuses, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_verRutaA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_verRutaB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_verRutaC, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialog_Transfers.setTitle("Transfers");
+        jDialog_Transfers.setMinimumSize(new java.awt.Dimension(300, 130));
+        jDialog_Transfers.setResizable(false);
+        jDialog_Transfers.setSize(new java.awt.Dimension(300, 130));
+
+        btn_verTransfers.setText("Ver lista de transfers");
+        btn_verTransfers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verTransfersActionPerformed(evt);
+            }
+        });
+
+        btn_reservarTransfer.setText("Reservar transfer");
+
+        javax.swing.GroupLayout jDialog_TransfersLayout = new javax.swing.GroupLayout(jDialog_Transfers.getContentPane());
+        jDialog_Transfers.getContentPane().setLayout(jDialog_TransfersLayout);
+        jDialog_TransfersLayout.setHorizontalGroup(
+            jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_TransfersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_verTransfers, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(btn_reservarTransfer, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jDialog_TransfersLayout.setVerticalGroup(
+            jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_TransfersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verTransfers, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_reservarTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialog_Clientes.setTitle("Clientes");
+        jDialog_Clientes.setMinimumSize(new java.awt.Dimension(300, 83));
+        jDialog_Clientes.setPreferredSize(new java.awt.Dimension(300, 83));
+        jDialog_Clientes.setResizable(false);
+        jDialog_Clientes.setSize(new java.awt.Dimension(300, 83));
+
+        btn_verClientes.setText("Ver lista de clientes");
+        btn_verClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verClientesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog_ClientesLayout = new javax.swing.GroupLayout(jDialog_Clientes.getContentPane());
+        jDialog_Clientes.getContentPane().setLayout(jDialog_ClientesLayout);
+        jDialog_ClientesLayout.setHorizontalGroup(
+            jDialog_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDialog_ClientesLayout.setVerticalGroup(
+            jDialog_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -586,66 +767,68 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panel_biciagilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_biciagilMouseClicked
-       this.jDialog_Bici.setVisible(true);
-       jDialog_Bici.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
+        this.jDialog_Bici.setVisible(true);
+        jDialog_Bici.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
     }//GEN-LAST:event_panel_biciagilMouseClicked
 
     private void panel_conductoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_conductoresMouseClicked
-        // TODO add your handling code here:
-        
-        this.JDConductores.show();
+        this.jDialog_Conductores.setVisible(true);
+        jDialog_Conductores.setLocationRelativeTo(null);
     }//GEN-LAST:event_panel_conductoresMouseClicked
 
     private void panel_busesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_busesMouseClicked
-        // TODO add your handling code here:
+        this.jDialog_Buses.setVisible(true);
+        jDialog_Buses.setLocationRelativeTo(null);
     }//GEN-LAST:event_panel_busesMouseClicked
 
     private void panel_transfersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_transfersMouseClicked
-        // TODO add your handling code here:
+        this.jDialog_Transfers.setVisible(true);
+        jDialog_Transfers.setLocationRelativeTo(null);
     }//GEN-LAST:event_panel_transfersMouseClicked
 
     private void panel_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_clientesMouseClicked
-        // TODO add your handling code here:
+        this.jDialog_Clientes.setVisible(true);
+        jDialog_Clientes.setLocationRelativeTo(null);
     }//GEN-LAST:event_panel_clientesMouseClicked
 
     private void panel_biciagilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_biciagilMouseEntered
-        panel_biciagil.setBackground(new Color(248,248,248));
+        panel_biciagil.setBackground(new Color(248, 248, 248));
     }//GEN-LAST:event_panel_biciagilMouseEntered
 
     private void panel_biciagilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_biciagilMouseExited
-         panel_biciagil.setBackground(new Color(234,234,234));
+        panel_biciagil.setBackground(new Color(234, 234, 234));
     }//GEN-LAST:event_panel_biciagilMouseExited
 
     private void panel_conductoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_conductoresMouseEntered
-        panel_conductores.setBackground(new Color(248,248,248));
+        panel_conductores.setBackground(new Color(248, 248, 248));
     }//GEN-LAST:event_panel_conductoresMouseEntered
 
     private void panel_conductoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_conductoresMouseExited
-       panel_conductores.setBackground(new Color(234,234,234));
+        panel_conductores.setBackground(new Color(234, 234, 234));
     }//GEN-LAST:event_panel_conductoresMouseExited
 
     private void panel_busesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_busesMouseEntered
-        panel_buses.setBackground(new Color(248,248,248));
+        panel_buses.setBackground(new Color(248, 248, 248));
     }//GEN-LAST:event_panel_busesMouseEntered
 
     private void panel_busesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_busesMouseExited
-        panel_buses.setBackground(new Color(234,234,234));
+        panel_buses.setBackground(new Color(234, 234, 234));
     }//GEN-LAST:event_panel_busesMouseExited
 
     private void panel_transfersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_transfersMouseEntered
-       panel_transfers.setBackground(new Color(248,248,248));
+        panel_transfers.setBackground(new Color(248, 248, 248));
     }//GEN-LAST:event_panel_transfersMouseEntered
 
     private void panel_transfersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_transfersMouseExited
-       panel_transfers.setBackground(new Color(234,234,234));
+        panel_transfers.setBackground(new Color(234, 234, 234));
     }//GEN-LAST:event_panel_transfersMouseExited
 
     private void panel_clientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_clientesMouseEntered
-        panel_clientes.setBackground(new Color(248,248,248));
+        panel_clientes.setBackground(new Color(248, 248, 248));
     }//GEN-LAST:event_panel_clientesMouseEntered
 
     private void panel_clientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_clientesMouseExited
-       panel_clientes.setBackground(new Color(234,234,234));
+        panel_clientes.setBackground(new Color(234, 234, 234));
     }//GEN-LAST:event_panel_clientesMouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -657,83 +840,68 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEdadConductorActionPerformed
 
     private void btnBuscarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConductorActionPerformed
-           try { 
-            
-               ConectarBD conexion=new ConectarBD(); 
-                Statement sentencia; 
-                
-            sentencia=conexion.getConexion().createStatement(); 
-            ResultSet resultado=sentencia.executeQuery("select * from CONDUCTOR where CONDUCTOR_ID ="
-                    +Integer.parseInt(this.txtIdConductor.getText())); 
-            
-           while (resultado.next())
-            {
-                this.txtCedulaConductor.setText(""+resultado.getString("CEDULA"));
-                this.txtNombreConductor.setText(""+resultado.getString("NOMBRE"));
-                this.txtEdadConductor.setText(""+resultado.getString("EDAD"));
-                this.txtTelefonoConductor.setText(""+resultado.getString("TELEFONO"));
-                this.txtDireccionConductor.setText(""+resultado.getString("DIRECCION"));
-                this.txtContrasenaConductor.setText(""+resultado.getString("CONTRASEÑA"));
+        try {
 
+            ConectarBD conexion = new ConectarBD();
+            Statement sentencia;
+
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("select * from CONDUCTOR where CONDUCTOR_ID ="
+                    + Integer.parseInt(this.txtIdConductor.getText()));
+
+            while (resultado.next()) {
+                this.txtCedulaConductor.setText("" + resultado.getString("CEDULA"));
+                this.txtNombreConductor.setText("" + resultado.getString("NOMBRE"));
+                this.txtEdadConductor.setText("" + resultado.getString("EDAD"));
+                this.txtTelefonoConductor.setText("" + resultado.getString("TELEFONO"));
+                this.txtDireccionConductor.setText("" + resultado.getString("DIRECCION"));
+                this.txtContrasenaConductor.setText("" + resultado.getString("CONTRASEÑA"));
             }
-     
-        resultado.close();
-        conexion.getConexion().close();
+
+            resultado.close();
+            conexion.getConexion().close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+
         }
-             catch(SQLException e ) 
-                { 
-                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
-                    ,JOptionPane.INFORMATION_MESSAGE); 
-              
-                } 
-                    catch(Exception e) 
-                       { 
-                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
-                        ,JOptionPane.INFORMATION_MESSAGE);
-                        
-                       }
     }//GEN-LAST:event_btnBuscarConductorActionPerformed
 
     private void btnAtrasConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasConductorActionPerformed
-        // TODO add your handling code here:
-        
-        this.JDConductores.hide();
+        this.JDConductores.setVisible(false);
     }//GEN-LAST:event_btnAtrasConductorActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btn_verConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verConductoresActionPerformed
+         this.JDConductores.setVisible(true);
+         this.jDialog_Conductores.setVisible(false);
+    }//GEN-LAST:event_btn_verConductoresActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
-        });
-    }
+    private void btn_verBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verBusesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verBusesActionPerformed
+
+    private void btn_verRutaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verRutaAActionPerformed
+
+    private void btn_verRutaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verRutaBActionPerformed
+
+    private void btn_verRutaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verRutaCActionPerformed
+
+    private void btn_verTransfersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verTransfersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verTransfersActionPerformed
+
+    private void btn_verClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verClientesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog JDConductores;
@@ -742,9 +910,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarConductor;
     private javax.swing.JButton btnEliminarConductor;
     private javax.swing.JButton btnRegistrarConductor;
+    private javax.swing.JButton btn_reservarTransfer;
+    private javax.swing.JButton btn_verBuses;
+    private javax.swing.JButton btn_verClientes;
+    private javax.swing.JButton btn_verConductores;
+    private javax.swing.JButton btn_verRutaA;
+    private javax.swing.JButton btn_verRutaB;
+    private javax.swing.JButton btn_verRutaC;
+    private javax.swing.JButton btn_verTransfers;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog_Bici;
+    private javax.swing.JDialog jDialog_Buses;
+    private javax.swing.JDialog jDialog_Clientes;
+    private javax.swing.JDialog jDialog_Conductores;
+    private javax.swing.JDialog jDialog_Transfers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -758,6 +938,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
