@@ -5,7 +5,12 @@
  */
 package Presentacion;
 
+import Logica.ConectarBD;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +38,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDialog_Bici = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        JDConductores = new javax.swing.JDialog();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        btnRegistrarConductor = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        btnEditarConductor = new javax.swing.JButton();
+        btnEliminarConductor = new javax.swing.JButton();
+        btnAtrasConductor = new javax.swing.JButton();
+        txtIdConductor = new javax.swing.JTextField();
+        txtCedulaConductor = new javax.swing.JTextField();
+        txtNombreConductor = new javax.swing.JTextField();
+        txtEdadConductor = new javax.swing.JTextField();
+        txtTelefonoConductor = new javax.swing.JTextField();
+        txtDireccionConductor = new javax.swing.JTextField();
+        txtContrasenaConductor = new javax.swing.JTextField();
+        btnBuscarConductor = new javax.swing.JButton();
         panel_logo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -58,9 +84,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
 
         jDialog_Bici.setTitle("Bici-ágil");
-        jDialog_Bici.setMaximumSize(new java.awt.Dimension(238, 98));
-        jDialog_Bici.setMinimumSize(new java.awt.Dimension(238, 98));
-        jDialog_Bici.setSize(new java.awt.Dimension(238, 98));
+        jDialog_Bici.setMinimumSize(new java.awt.Dimension(300, 200));
 
         jButton1.setText("Ver bicicletas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +114,142 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        JDConductores.setMinimumSize(new java.awt.Dimension(500, 600));
+
+        jLabel8.setText("SECCION CONDUCTORES");
+
+        jLabel9.setText("Id:");
+
+        jLabel10.setText("Cedula:");
+
+        btnRegistrarConductor.setText("Registrar");
+
+        jLabel16.setText("Nombre:");
+
+        jLabel17.setText("Edad:");
+
+        jLabel18.setText("Telefono:");
+
+        jLabel19.setText("Direccion:");
+
+        jLabel20.setText("Contraseña:");
+
+        btnEditarConductor.setText("Editar");
+
+        btnEliminarConductor.setText("Eliminar");
+
+        btnAtrasConductor.setText("Atras");
+        btnAtrasConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasConductorActionPerformed(evt);
+            }
+        });
+
+        txtEdadConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadConductorActionPerformed(evt);
+            }
+        });
+
+        btnBuscarConductor.setText("Buscar");
+        btnBuscarConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarConductorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JDConductoresLayout = new javax.swing.GroupLayout(JDConductores.getContentPane());
+        JDConductores.getContentPane().setLayout(JDConductoresLayout);
+        JDConductoresLayout.setHorizontalGroup(
+            JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDConductoresLayout.createSequentialGroup()
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDConductoresLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JDConductoresLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(32, 32, 32)
+                                .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JDConductoresLayout.createSequentialGroup()
+                                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel16))
+                                .addGap(37, 37, 37)
+                                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCedulaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JDConductoresLayout.createSequentialGroup()
+                                        .addComponent(txtIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(96, 96, 96)
+                                        .addComponent(btnBuscarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(JDConductoresLayout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JDConductoresLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(31, 31, 31)
+                                .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JDConductoresLayout.createSequentialGroup()
+                                .addComponent(btnRegistrarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEditarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                                .addComponent(btnAtrasConductor))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDConductoresLayout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        JDConductoresLayout.setVerticalGroup(
+            JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDConductoresLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarConductor))
+                .addGap(22, 22, 22)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtCedulaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarConductor)
+                    .addComponent(btnEditarConductor)
+                    .addComponent(btnEliminarConductor)
+                    .addComponent(btnAtrasConductor))
+                .addGap(24, 24, 24))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -432,6 +592,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void panel_conductoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_conductoresMouseClicked
         // TODO add your handling code here:
+        
+        this.JDConductores.show();
     }//GEN-LAST:event_panel_conductoresMouseClicked
 
     private void panel_busesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_busesMouseClicked
@@ -490,6 +652,54 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtEdadConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadConductorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadConductorActionPerformed
+
+    private void btnBuscarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConductorActionPerformed
+           try { 
+            
+               ConectarBD conexion=new ConectarBD(); 
+                Statement sentencia; 
+                
+            sentencia=conexion.getConexion().createStatement(); 
+            ResultSet resultado=sentencia.executeQuery("select * from CONDUCTOR where CONDUCTOR_ID ="
+                    +Integer.parseInt(this.txtIdConductor.getText())); 
+            
+           while (resultado.next())
+            {
+                this.txtCedulaConductor.setText(""+resultado.getString("CEDULA"));
+                this.txtNombreConductor.setText(""+resultado.getString("NOMBRE"));
+                this.txtEdadConductor.setText(""+resultado.getString("EDAD"));
+                this.txtTelefonoConductor.setText(""+resultado.getString("TELEFONO"));
+                this.txtDireccionConductor.setText(""+resultado.getString("DIRECCION"));
+                this.txtContrasenaConductor.setText(""+resultado.getString("CONTRASEÑA"));
+
+            }
+     
+        resultado.close();
+        conexion.getConexion().close();
+        }
+             catch(SQLException e ) 
+                { 
+                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
+                    ,JOptionPane.INFORMATION_MESSAGE); 
+              
+                } 
+                    catch(Exception e) 
+                       { 
+                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
+                        ,JOptionPane.INFORMATION_MESSAGE);
+                        
+                       }
+    }//GEN-LAST:event_btnBuscarConductorActionPerformed
+
+    private void btnAtrasConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasConductorActionPerformed
+        // TODO add your handling code here:
+        
+        this.JDConductores.hide();
+    }//GEN-LAST:event_btnAtrasConductorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -526,21 +736,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog JDConductores;
+    private javax.swing.JButton btnAtrasConductor;
+    private javax.swing.JButton btnBuscarConductor;
+    private javax.swing.JButton btnEditarConductor;
+    private javax.swing.JButton btnEliminarConductor;
+    private javax.swing.JButton btnRegistrarConductor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog_Bici;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label_correo;
     private javax.swing.JLabel label_nombre;
@@ -552,5 +776,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panel_datos;
     private javax.swing.JPanel panel_logo;
     private javax.swing.JPanel panel_transfers;
+    private javax.swing.JTextField txtCedulaConductor;
+    private javax.swing.JTextField txtContrasenaConductor;
+    private javax.swing.JTextField txtDireccionConductor;
+    private javax.swing.JTextField txtEdadConductor;
+    private javax.swing.JTextField txtIdConductor;
+    private javax.swing.JTextField txtNombreConductor;
+    private javax.swing.JTextField txtTelefonoConductor;
     // End of variables declaration//GEN-END:variables
 }
