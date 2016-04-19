@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor. HEX COLOR 0a7e00
+ * and open the template in the editor. HEX COLOR 0a7e00 60px
  */
 package Presentacion;
 
@@ -30,9 +30,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog_Conductores = new javax.swing.JDialog();
+        btn_verConductores = new javax.swing.JButton();
         jDialog_Bici = new javax.swing.JDialog();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_verBici = new javax.swing.JButton();
+        btn_reservarBici = new javax.swing.JButton();
+        jDialog_Buses = new javax.swing.JDialog();
+        btn_verBuses = new javax.swing.JButton();
+        btn_verRutaA = new javax.swing.JButton();
+        btn_verRutaB = new javax.swing.JButton();
+        btn_verRutaC = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jDialog_Transfers = new javax.swing.JDialog();
+        btn_verTransfers = new javax.swing.JButton();
+        btn_reservarTransfer = new javax.swing.JButton();
+        jDialog_Clientes = new javax.swing.JDialog();
+        btn_verClientes = new javax.swing.JButton();
         panel_logo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -57,19 +70,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panel_conductores = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
 
-        jDialog_Bici.setTitle("Bici-ágil");
-        jDialog_Bici.setMaximumSize(new java.awt.Dimension(238, 98));
-        jDialog_Bici.setMinimumSize(new java.awt.Dimension(238, 98));
-        jDialog_Bici.setSize(new java.awt.Dimension(238, 98));
+        jDialog_Conductores.setTitle("Conductores");
+        jDialog_Conductores.setIconImage(null);
+        jDialog_Conductores.setMinimumSize(new java.awt.Dimension(238, 37));
+        jDialog_Conductores.setResizable(false);
+        jDialog_Conductores.setSize(new java.awt.Dimension(238, 37));
 
-        jButton1.setText("Ver bicicletas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_verConductores.setText("Ver lista de conductores");
+        btn_verConductores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_verConductoresActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Reservar bicicleta");
+        javax.swing.GroupLayout jDialog_ConductoresLayout = new javax.swing.GroupLayout(jDialog_Conductores.getContentPane());
+        jDialog_Conductores.getContentPane().setLayout(jDialog_ConductoresLayout);
+        jDialog_ConductoresLayout.setHorizontalGroup(
+            jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDialog_ConductoresLayout.setVerticalGroup(
+            jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialog_Bici.setTitle("Bici-ágil");
+        jDialog_Bici.setMinimumSize(new java.awt.Dimension(238, 98));
+        jDialog_Bici.setResizable(false);
+        jDialog_Bici.setSize(new java.awt.Dimension(238, 98));
+
+        btn_verBici.setText("Ver lista de bicicletas");
+        btn_verBici.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verBiciActionPerformed(evt);
+            }
+        });
+
+        btn_reservarBici.setText("Reservar bicicleta");
 
         javax.swing.GroupLayout jDialog_BiciLayout = new javax.swing.GroupLayout(jDialog_Bici.getContentPane());
         jDialog_Bici.getContentPane().setLayout(jDialog_BiciLayout);
@@ -78,17 +121,151 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_BiciLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                    .addComponent(btn_verBici, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_reservarBici, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jDialog_BiciLayout.setVerticalGroup(
             jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog_BiciLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_verBici, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_reservarBici, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialog_Buses.setTitle("Buses");
+        jDialog_Buses.setMinimumSize(new java.awt.Dimension(238, 142));
+        jDialog_Buses.setResizable(false);
+        jDialog_Buses.setSize(new java.awt.Dimension(238, 142));
+
+        btn_verBuses.setText("Ver lista de buses");
+        btn_verBuses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verBusesActionPerformed(evt);
+            }
+        });
+
+        btn_verRutaA.setText("Ruta A");
+        btn_verRutaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verRutaAActionPerformed(evt);
+            }
+        });
+
+        btn_verRutaB.setText("Ruta B");
+        btn_verRutaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verRutaBActionPerformed(evt);
+            }
+        });
+
+        btn_verRutaC.setText("Ruta C");
+        btn_verRutaC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verRutaCActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Ver buses en tiempo real");
+
+        javax.swing.GroupLayout jDialog_BusesLayout = new javax.swing.GroupLayout(jDialog_Buses.getContentPane());
+        jDialog_Buses.getContentPane().setLayout(jDialog_BusesLayout);
+        jDialog_BusesLayout.setHorizontalGroup(
+            jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_BusesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_verBuses, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog_BusesLayout.createSequentialGroup()
+                        .addComponent(btn_verRutaA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_verRutaB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_verRutaC)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog_BusesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(54, 54, 54))
+        );
+        jDialog_BusesLayout.setVerticalGroup(
+            jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_BusesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verBuses, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_verRutaA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_verRutaB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_verRutaC, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jDialog_Transfers.setTitle("Transfers");
+        jDialog_Transfers.setMinimumSize(new java.awt.Dimension(238, 98));
+        jDialog_Transfers.setResizable(false);
+        jDialog_Transfers.setSize(new java.awt.Dimension(238, 98));
+
+        btn_verTransfers.setText("Ver lista de transfers");
+        btn_verTransfers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verTransfersActionPerformed(evt);
+            }
+        });
+
+        btn_reservarTransfer.setText("Reservar transfer");
+
+        javax.swing.GroupLayout jDialog_TransfersLayout = new javax.swing.GroupLayout(jDialog_Transfers.getContentPane());
+        jDialog_Transfers.getContentPane().setLayout(jDialog_TransfersLayout);
+        jDialog_TransfersLayout.setHorizontalGroup(
+            jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_TransfersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_verTransfers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_reservarTransfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jDialog_TransfersLayout.setVerticalGroup(
+            jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_TransfersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verTransfers, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_reservarTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialog_Clientes.setTitle("Clientes");
+        jDialog_Clientes.setMinimumSize(new java.awt.Dimension(238, 37));
+        jDialog_Clientes.setResizable(false);
+        jDialog_Clientes.setSize(new java.awt.Dimension(238, 37));
+
+        btn_verClientes.setText("Ver lista de clientes");
+        btn_verClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verClientesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog_ClientesLayout = new javax.swing.GroupLayout(jDialog_Clientes.getContentPane());
+        jDialog_Clientes.getContentPane().setLayout(jDialog_ClientesLayout);
+        jDialog_ClientesLayout.setHorizontalGroup(
+            jDialog_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDialog_ClientesLayout.setVerticalGroup(
+            jDialog_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_verClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -431,11 +608,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_panel_biciagilMouseClicked
 
     private void panel_conductoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_conductoresMouseClicked
-        // TODO add your handling code here:
+        this.jDialog_Conductores.setVisible(true);
+       jDialog_Conductores.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
     }//GEN-LAST:event_panel_conductoresMouseClicked
 
     private void panel_busesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_busesMouseClicked
-        // TODO add your handling code here:
+        this.jDialog_Buses.setVisible(true);
+       jDialog_Buses.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
     }//GEN-LAST:event_panel_busesMouseClicked
 
     private void panel_transfersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_transfersMouseClicked
@@ -486,49 +665,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        panel_clientes.setBackground(new Color(234,234,234));
     }//GEN-LAST:event_panel_clientesMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_verBiciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verBiciActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_verBiciActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btn_verConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verConductoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verConductoresActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
-        });
-    }
+    private void btn_verBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verBusesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verBusesActionPerformed
+
+    private void btn_verRutaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verRutaAActionPerformed
+
+    private void btn_verRutaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verRutaBActionPerformed
+
+    private void btn_verRutaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verRutaCActionPerformed
+
+    private void btn_verTransfersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verTransfersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verTransfersActionPerformed
+
+    private void btn_verClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verClientesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_reservarBici;
+    private javax.swing.JButton btn_reservarTransfer;
+    private javax.swing.JButton btn_verBici;
+    private javax.swing.JButton btn_verBuses;
+    private javax.swing.JButton btn_verClientes;
+    private javax.swing.JButton btn_verConductores;
+    private javax.swing.JButton btn_verRutaA;
+    private javax.swing.JButton btn_verRutaB;
+    private javax.swing.JButton btn_verRutaC;
+    private javax.swing.JButton btn_verTransfers;
     private javax.swing.JDialog jDialog_Bici;
+    private javax.swing.JDialog jDialog_Buses;
+    private javax.swing.JDialog jDialog_Clientes;
+    private javax.swing.JDialog jDialog_Conductores;
+    private javax.swing.JDialog jDialog_Transfers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -541,6 +726,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label_correo;
     private javax.swing.JLabel label_nombre;
