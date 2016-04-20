@@ -152,7 +152,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jDialog_Conductores.setTitle("Conductores");
         jDialog_Conductores.setIconImage(null);
-        jDialog_Conductores.setMinimumSize(new java.awt.Dimension(300, 200));
+        jDialog_Conductores.setMinimumSize(new java.awt.Dimension(300, 126));
+        jDialog_Conductores.setPreferredSize(new java.awt.Dimension(300, 126));
+        jDialog_Conductores.setResizable(false);
 
         btn_verConductores.setText("Ver lista de conductores");
         btn_verConductores.addActionListener(new java.awt.event.ActionListener() {
@@ -175,8 +177,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnOpcionesDelConductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_verConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+                    .addComponent(btn_verConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(btnOpcionesDelConductor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jDialog_ConductoresLayout.setVerticalGroup(
@@ -184,9 +186,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_verConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOpcionesDelConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jDialog_Buses.setTitle("Buses");
