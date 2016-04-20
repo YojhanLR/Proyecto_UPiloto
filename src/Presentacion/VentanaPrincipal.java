@@ -5,18 +5,25 @@
  */
 package Presentacion;
 
+import Logica.Conductor;
 import Logica.ConectarBD;
 import java.awt.Color;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Yojhan
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    
+    
+    
+      Conductor objCond = new Conductor();
 
     /**
      * Creates new form VentanaPrincipal
@@ -40,6 +47,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jDialog_Conductores = new javax.swing.JDialog();
         btn_verConductores = new javax.swing.JButton();
+        btnOpcionesDelConductor = new javax.swing.JButton();
         jDialog_Buses = new javax.swing.JDialog();
         btn_verBuses = new javax.swing.JButton();
         btn_verRutaA = new javax.swing.JButton();
@@ -51,7 +59,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btn_reservarTransfer = new javax.swing.JButton();
         jDialog_Clientes = new javax.swing.JDialog();
         btn_verClientes = new javax.swing.JButton();
-        JDConductores = new javax.swing.JDialog();
+        JDOpcionesConductores = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -72,6 +80,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtDireccionConductor = new javax.swing.JTextField();
         txtContrasenaConductor = new javax.swing.JTextField();
         btnBuscarConductor = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        txtEstadoConductor = new javax.swing.JTextField();
+        JDListadoConductores = new javax.swing.JDialog();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ListaDeConductores = new javax.swing.JTable();
+        btnSalirListadoDeConductores = new javax.swing.JButton();
         panel_logo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -132,14 +147,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jDialog_Conductores.setTitle("Conductores");
         jDialog_Conductores.setIconImage(null);
-        jDialog_Conductores.setMinimumSize(new java.awt.Dimension(300, 83));
-        jDialog_Conductores.setResizable(false);
-        jDialog_Conductores.setSize(new java.awt.Dimension(300, 83));
+        jDialog_Conductores.setMinimumSize(new java.awt.Dimension(300, 200));
 
         btn_verConductores.setText("Ver lista de conductores");
         btn_verConductores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_verConductoresActionPerformed(evt);
+            }
+        });
+
+        btnOpcionesDelConductor.setText("Opciones del Conductor");
+        btnOpcionesDelConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpcionesDelConductorActionPerformed(evt);
             }
         });
 
@@ -149,7 +169,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_verConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addGroup(jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnOpcionesDelConductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_verConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jDialog_ConductoresLayout.setVerticalGroup(
@@ -157,13 +179,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_ConductoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_verConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(btnOpcionesDelConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jDialog_Buses.setTitle("Buses");
         jDialog_Buses.setMinimumSize(new java.awt.Dimension(300, 156));
         jDialog_Buses.setResizable(false);
-        jDialog_Buses.setSize(new java.awt.Dimension(300, 156));
 
         btn_verBuses.setText("Ver lista de buses");
         btn_verBuses.addActionListener(new java.awt.event.ActionListener() {
@@ -202,16 +225,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_BusesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog_BusesLayout.createSequentialGroup()
-                        .addComponent(btn_verBuses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(btn_verBuses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDialog_BusesLayout.createSequentialGroup()
                         .addComponent(btn_verRutaA, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(btn_verRutaB, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_verRutaC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btn_verRutaC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog_BusesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel21)
@@ -235,7 +256,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDialog_Transfers.setTitle("Transfers");
         jDialog_Transfers.setMinimumSize(new java.awt.Dimension(300, 130));
         jDialog_Transfers.setResizable(false);
-        jDialog_Transfers.setSize(new java.awt.Dimension(300, 130));
 
         btn_verTransfers.setText("Ver lista de transfers");
         btn_verTransfers.addActionListener(new java.awt.event.ActionListener() {
@@ -269,9 +289,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jDialog_Clientes.setTitle("Clientes");
         jDialog_Clientes.setMinimumSize(new java.awt.Dimension(300, 83));
-        jDialog_Clientes.setPreferredSize(new java.awt.Dimension(300, 83));
         jDialog_Clientes.setResizable(false);
-        jDialog_Clientes.setSize(new java.awt.Dimension(300, 83));
 
         btn_verClientes.setText("Ver lista de clientes");
         btn_verClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +315,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        JDConductores.setMinimumSize(new java.awt.Dimension(500, 600));
+        JDOpcionesConductores.setMinimumSize(new java.awt.Dimension(500, 600));
 
         jLabel8.setText("SECCION CONDUCTORES");
 
@@ -306,6 +324,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel10.setText("Cedula:");
 
         btnRegistrarConductor.setText("Registrar");
+        btnRegistrarConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarConductorActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Nombre:");
 
@@ -318,8 +341,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel20.setText("Contraseña:");
 
         btnEditarConductor.setText("Editar");
+        btnEditarConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarConductorActionPerformed(evt);
+            }
+        });
 
         btnEliminarConductor.setText("Eliminar");
+        btnEliminarConductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarConductorActionPerformed(evt);
+            }
+        });
 
         btnAtrasConductor.setText("Atras");
         btnAtrasConductor.addActionListener(new java.awt.event.ActionListener() {
@@ -341,96 +374,164 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout JDConductoresLayout = new javax.swing.GroupLayout(JDConductores.getContentPane());
-        JDConductores.getContentPane().setLayout(JDConductoresLayout);
-        JDConductoresLayout.setHorizontalGroup(
-            JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDConductoresLayout.createSequentialGroup()
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDConductoresLayout.createSequentialGroup()
+        jLabel22.setText("Estado:");
+
+        javax.swing.GroupLayout JDOpcionesConductoresLayout = new javax.swing.GroupLayout(JDOpcionesConductores.getContentPane());
+        JDOpcionesConductores.getContentPane().setLayout(JDOpcionesConductoresLayout);
+        JDOpcionesConductoresLayout.setHorizontalGroup(
+            JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(JDConductoresLayout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(32, 32, 32)
-                                .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(JDConductoresLayout.createSequentialGroup()
-                                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel16))
-                                .addGap(37, 37, 37)
-                                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCedulaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(JDConductoresLayout.createSequentialGroup()
-                                        .addComponent(txtIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(96, 96, 96)
-                                        .addComponent(btnBuscarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(JDConductoresLayout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(JDConductoresLayout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(31, 31, 31)
-                                .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(JDConductoresLayout.createSequentialGroup()
-                                .addComponent(btnRegistrarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel16))
+                                        .addGap(37, 37, 37)
+                                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCedulaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                                .addComponent(txtIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(96, 96, 96)
+                                                .addComponent(btnBuscarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                        .addComponent(jLabel19)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel20)
+                                            .addComponent(jLabel22))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtEstadoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
+                                        .addComponent(btnRegistrarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnEditarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnEliminarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                                .addComponent(btnAtrasConductor))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDConductoresLayout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnAtrasConductor)))))
                 .addContainerGap())
         );
-        JDConductoresLayout.setVerticalGroup(
-            JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDConductoresLayout.createSequentialGroup()
+        JDOpcionesConductoresLayout.setVerticalGroup(
+            JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarConductor))
                 .addGap(22, 22, 22)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtCedulaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(JDConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(25, 25, 25)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtEstadoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarConductor)
                     .addComponent(btnEditarConductor)
                     .addComponent(btnEliminarConductor)
                     .addComponent(btnAtrasConductor))
                 .addGap(24, 24, 24))
+        );
+
+        JDListadoConductores.setMinimumSize(new java.awt.Dimension(900, 450));
+
+        jLabel23.setText("LISTA DE CONDUCTORES");
+
+        ListaDeConductores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(ListaDeConductores);
+
+        btnSalirListadoDeConductores.setText("Salir");
+        btnSalirListadoDeConductores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirListadoDeConductoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JDListadoConductoresLayout = new javax.swing.GroupLayout(JDListadoConductores.getContentPane());
+        JDListadoConductores.getContentPane().setLayout(JDListadoConductoresLayout);
+        JDListadoConductoresLayout.setHorizontalGroup(
+            JDListadoConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoConductoresLayout.createSequentialGroup()
+                .addGap(0, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoConductoresLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JDListadoConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoConductoresLayout.createSequentialGroup()
+                        .addComponent(btnSalirListadoDeConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(327, 327, 327))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoConductoresLayout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(291, 291, 291))))
+        );
+        JDListadoConductoresLayout.setVerticalGroup(
+            JDListadoConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDListadoConductoresLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(btnSalirListadoDeConductores)
+                .addGap(23, 23, 23))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -856,6 +957,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 this.txtTelefonoConductor.setText("" + resultado.getString("TELEFONO"));
                 this.txtDireccionConductor.setText("" + resultado.getString("DIRECCION"));
                 this.txtContrasenaConductor.setText("" + resultado.getString("CONTRASEÑA"));
+                this.txtEstadoConductor.setText("" + resultado.getString("ESTADO"));
             }
 
             resultado.close();
@@ -870,12 +972,57 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarConductorActionPerformed
 
     private void btnAtrasConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasConductorActionPerformed
-        this.JDConductores.setVisible(false);
+        this.JDOpcionesConductores.setVisible(false);
+        this.jDialog_Conductores.setVisible(true);
     }//GEN-LAST:event_btnAtrasConductorActionPerformed
 
     private void btn_verConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verConductoresActionPerformed
-         this.JDConductores.setVisible(true);
-         this.jDialog_Conductores.setVisible(false);
+ 
+        this.JDListadoConductores.setVisible(true);
+        
+        
+     
+        DefaultTableModel modelo=new DefaultTableModel(); 
+ 
+     this.ListaDeConductores.setModel(modelo); 
+        ConectarBD conexion=new ConectarBD(); 
+        Statement sentencia; 
+        
+        try { 
+            sentencia=conexion.getConexion().createStatement(); 
+            ResultSet resultado=sentencia.executeQuery("SELECT * FROM CONDUCTOR "); 
+            ResultSetMetaData campos = resultado.getMetaData(); 
+            int cantidadColumnas = campos.getColumnCount(); 
+                for (int i = 1; i <= cantidadColumnas; i++) 
+                     { 
+                        modelo.addColumn(campos.getColumnLabel(i)); 
+                      } 
+                        while (resultado.next()) 
+                           { 
+                                Object[] fila = new Object[cantidadColumnas]; 
+                                     for (int i = 0; i < cantidadColumnas; i++) 
+                                         { 
+                                            fila[i]=resultado.getObject(i+1); 
+                                          } 
+                                 modelo.addRow(fila); 
+                            } 
+                        resultado.close(); 
+                        conexion.getConexion().close(); 
+                        
+                          
+            } 
+             catch(SQLException e ) 
+                { 
+                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
+                    ,JOptionPane.INFORMATION_MESSAGE); 
+                } 
+                    catch(Exception e) 
+                       { 
+                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
+                        ,JOptionPane.INFORMATION_MESSAGE); 
+                       }
+
+        
     }//GEN-LAST:event_btn_verConductoresActionPerformed
 
     private void btn_verBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verBusesActionPerformed
@@ -902,14 +1049,129 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_verClientesActionPerformed
 
+    private void btnOpcionesDelConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesDelConductorActionPerformed
+        // TODO add your handling code here:
+        this.JDOpcionesConductores.setVisible(true);
+        this.jDialog_Conductores.setVisible(false);
+        
+        this.txtIdConductor.setText("");
+         this.txtCedulaConductor.setText("");
+         this.txtNombreConductor.setText("");
+         this.txtEdadConductor.setText("");
+         this.txtTelefonoConductor.setText("");
+         this.txtDireccionConductor.setText("");
+         this.txtContrasenaConductor.setText("");
+         this.txtEstadoConductor.setText("");
+        
+    }//GEN-LAST:event_btnOpcionesDelConductorActionPerformed
+
+    private void btnRegistrarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarConductorActionPerformed
+        // TODO add your handling code here:
+        
+         try
+        {
+         objCond.guardarCond(this.txtIdConductor.getText(), this.txtCedulaConductor.getText(), this.txtNombreConductor.getText(),
+                this.txtEdadConductor.getText(),this.txtTelefonoConductor.getText(),this.txtDireccionConductor.getText(),
+                this.txtContrasenaConductor.getText(),this.txtEstadoConductor.getText());
+         
+         this.txtIdConductor.setText("");
+         this.txtCedulaConductor.setText("");
+         this.txtNombreConductor.setText("");
+         this.txtEdadConductor.setText("");
+         this.txtTelefonoConductor.setText("");
+         this.txtDireccionConductor.setText("");
+         this.txtContrasenaConductor.setText("");
+         this.txtEstadoConductor.setText("");
+         
+        } catch (NumberFormatException e) 
+                {
+                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
+                           JOptionPane.WARNING_MESSAGE);
+                }
+        
+    }//GEN-LAST:event_btnRegistrarConductorActionPerformed
+
+    private void btnEditarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConductorActionPerformed
+        // TODO add your handling code here:
+        
+           try
+        {
+         objCond.actualizarCond(this.txtIdConductor.getText(), this.txtCedulaConductor.getText(), this.txtNombreConductor.getText(),
+                this.txtEdadConductor.getText(),this.txtTelefonoConductor.getText(),this.txtDireccionConductor.getText(),
+                this.txtContrasenaConductor.getText(),this.txtEstadoConductor.getText());
+         
+         this.txtIdConductor.setText("");
+         this.txtCedulaConductor.setText("");
+         this.txtNombreConductor.setText("");
+         this.txtEdadConductor.setText("");
+         this.txtTelefonoConductor.setText("");
+         this.txtDireccionConductor.setText("");
+         this.txtContrasenaConductor.setText("");
+         this.txtEstadoConductor.setText("");
+         
+        } catch (NumberFormatException e) 
+                {
+                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
+                           JOptionPane.WARNING_MESSAGE);
+                }
+        
+    }//GEN-LAST:event_btnEditarConductorActionPerformed
+
+    private void btnEliminarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarConductorActionPerformed
+        // TODO add your handling code here:
+        
+        int seleccion = JOptionPane.showOptionDialog(this,"¿DESEA ELIMINAR EL REGISTRO(Si/No)","Seleccione una opción",
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null,new Object[] { "Si", "No"},"Si");
+if((seleccion + 1)==1)
+    {
+            try{
+        
+            objCond.eliminarCond(this.txtIdConductor.getText());
+             
+          
+          
+           } catch (NumberFormatException e) 
+                {
+                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
+                           JOptionPane.WARNING_MESSAGE);
+                }
+            
+    }else
+{
+    JOptionPane.showMessageDialog(this,"REGISTRO NO ELIMINADO","Información",
+            JOptionPane.INFORMATION_MESSAGE);
+}
+
+         this.txtIdConductor.setText("");
+         this.txtCedulaConductor.setText("");
+         this.txtNombreConductor.setText("");
+         this.txtEdadConductor.setText("");
+         this.txtTelefonoConductor.setText("");
+         this.txtDireccionConductor.setText("");
+         this.txtContrasenaConductor.setText("");
+         this.txtEstadoConductor.setText("");
+    }//GEN-LAST:event_btnEliminarConductorActionPerformed
+
+    private void btnSalirListadoDeConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirListadoDeConductoresActionPerformed
+
+        this.JDListadoConductores.hide();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirListadoDeConductoresActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog JDConductores;
+    private javax.swing.JDialog JDListadoConductores;
+    private javax.swing.JDialog JDOpcionesConductores;
+    private javax.swing.JTable ListaDeConductores;
     private javax.swing.JButton btnAtrasConductor;
     private javax.swing.JButton btnBuscarConductor;
     private javax.swing.JButton btnEditarConductor;
     private javax.swing.JButton btnEliminarConductor;
+    private javax.swing.JButton btnOpcionesDelConductor;
     private javax.swing.JButton btnRegistrarConductor;
+    private javax.swing.JButton btnSalirListadoDeConductores;
     private javax.swing.JButton btn_reservarTransfer;
     private javax.swing.JButton btn_verBuses;
     private javax.swing.JButton btn_verClientes;
@@ -939,6 +1201,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -946,6 +1210,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label_correo;
     private javax.swing.JLabel label_nombre;
@@ -961,6 +1226,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtContrasenaConductor;
     private javax.swing.JTextField txtDireccionConductor;
     private javax.swing.JTextField txtEdadConductor;
+    private javax.swing.JTextField txtEstadoConductor;
     private javax.swing.JTextField txtIdConductor;
     private javax.swing.JTextField txtNombreConductor;
     private javax.swing.JTextField txtTelefonoConductor;
