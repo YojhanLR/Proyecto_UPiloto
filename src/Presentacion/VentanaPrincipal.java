@@ -5,11 +5,13 @@
  */
 package Presentacion;
 
+import Logica.Bus;
 import Logica.ConectarBD;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +23,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    
+    public static ArrayList <Bus> buses = new ArrayList <>();
+    
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
@@ -202,16 +207,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_BusesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialog_BusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog_BusesLayout.createSequentialGroup()
-                        .addComponent(btn_verBuses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(btn_verBuses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDialog_BusesLayout.createSequentialGroup()
                         .addComponent(btn_verRutaA, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(btn_verRutaB, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_verRutaC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btn_verRutaC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog_BusesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel21)
@@ -269,7 +272,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jDialog_Clientes.setTitle("Clientes");
         jDialog_Clientes.setMinimumSize(new java.awt.Dimension(300, 83));
-        jDialog_Clientes.setPreferredSize(new java.awt.Dimension(300, 83));
         jDialog_Clientes.setResizable(false);
         jDialog_Clientes.setSize(new java.awt.Dimension(300, 83));
 
@@ -883,15 +885,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_verBusesActionPerformed
 
     private void btn_verRutaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaAActionPerformed
-        // TODO add your handling code here:
+        jDialog_Buses.setVisible(false);
+        VentanaRuta vr = new VentanaRuta("A");
+        vr.setVisible(true);
     }//GEN-LAST:event_btn_verRutaAActionPerformed
 
     private void btn_verRutaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaBActionPerformed
-        // TODO add your handling code here:
+        jDialog_Buses.setVisible(false);
+        VentanaRuta vr = new VentanaRuta("B");
+        vr.setVisible(true);
     }//GEN-LAST:event_btn_verRutaBActionPerformed
 
     private void btn_verRutaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaCActionPerformed
-        // TODO add your handling code here:
+        jDialog_Buses.setVisible(false);
+        VentanaRuta vr = new VentanaRuta("C");
+        vr.setVisible(true);
     }//GEN-LAST:event_btn_verRutaCActionPerformed
 
     private void btn_verTransfersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verTransfersActionPerformed
