@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import Logica.Bus;
 import Logica.Conductor;
 import Logica.ConectarBD;
 import java.awt.Color;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +30,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    
+    public static ArrayList <Bus> buses = new ArrayList <>();
+    
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
@@ -1030,15 +1035,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_verBusesActionPerformed
 
     private void btn_verRutaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaAActionPerformed
-        // TODO add your handling code here:
+        jDialog_Buses.setVisible(false);
+        VentanaRuta vr = new VentanaRuta("A");
+        vr.setVisible(true);
     }//GEN-LAST:event_btn_verRutaAActionPerformed
 
     private void btn_verRutaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaBActionPerformed
-        // TODO add your handling code here:
+        jDialog_Buses.setVisible(false);
+        VentanaRuta vr = new VentanaRuta("B");
+        vr.setVisible(true);
     }//GEN-LAST:event_btn_verRutaBActionPerformed
 
     private void btn_verRutaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaCActionPerformed
-        // TODO add your handling code here:
+        jDialog_Buses.setVisible(false);
+        VentanaRuta vr = new VentanaRuta("C");
+        vr.setVisible(true);
     }//GEN-LAST:event_btn_verRutaCActionPerformed
 
     private void btn_verTransfersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verTransfersActionPerformed
