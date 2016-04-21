@@ -147,15 +147,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         label_username = new javax.swing.JLabel();
         panel_buses = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
         panel_transfers = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
         panel_biciagil = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         panel_clientes = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
         panel_conductores = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
 
         jDialog_Bici.setTitle("Bici-ágil");
         jDialog_Bici.setMinimumSize(new java.awt.Dimension(300, 126));
@@ -199,7 +203,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDialog_Conductores.setTitle("Conductores");
         jDialog_Conductores.setIconImage(null);
         jDialog_Conductores.setMinimumSize(new java.awt.Dimension(300, 126));
-        jDialog_Conductores.setPreferredSize(new java.awt.Dimension(300, 126));
         jDialog_Conductores.setResizable(false);
 
         btn_verConductores.setText("Ver lista de conductores");
@@ -1011,23 +1014,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 102, 0));
         jLabel11.setText("Buses");
+
+        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/map-icon-bus-station.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_busesLayout = new javax.swing.GroupLayout(panel_buses);
         panel_buses.setLayout(panel_busesLayout);
         panel_busesLayout.setHorizontalGroup(
             panel_busesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_busesLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel11)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGroup(panel_busesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_busesLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel11))
+                    .addGroup(panel_busesLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel39)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         panel_busesLayout.setVerticalGroup(
             panel_busesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_busesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel11)
-                .addContainerGap())
+                .addComponent(jLabel39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11))
         );
 
         panel_transfers.setBackground(new java.awt.Color(234, 234, 234));
@@ -1047,23 +1060,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 102, 0));
         jLabel12.setText("Transfer");
+
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fa-taxi.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_transfersLayout = new javax.swing.GroupLayout(panel_transfers);
         panel_transfers.setLayout(panel_transfersLayout);
         panel_transfersLayout.setHorizontalGroup(
             panel_transfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transfersLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(31, 31, 31))
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(panel_transfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_transfersLayout.createSequentialGroup()
+                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transfersLayout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
         panel_transfersLayout.setVerticalGroup(
             panel_transfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transfersLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addContainerGap())
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12))
         );
 
         panel_biciagil.setBackground(new java.awt.Color(234, 234, 234));
@@ -1094,22 +1117,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panel_biciagilLayout.setHorizontalGroup(
             panel_biciagilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_biciagilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(35, 35, 35))
-            .addGroup(panel_biciagilLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel7)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(panel_biciagilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_biciagilLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel13))
+                    .addGroup(panel_biciagilLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel7)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         panel_biciagilLayout.setVerticalGroup(
             panel_biciagilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_biciagilLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13))
         );
 
         panel_clientes.setBackground(new java.awt.Color(234, 234, 234));
@@ -1129,23 +1152,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 102, 0));
         jLabel14.setText("Clientes");
+
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fa-users.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_clientesLayout = new javax.swing.GroupLayout(panel_clientes);
         panel_clientes.setLayout(panel_clientesLayout);
         panel_clientesLayout.setHorizontalGroup(
             panel_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_clientesLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jLabel14)
-                .addGap(33, 33, 33))
+                .addGap(28, 28, 28))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_clientesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panel_clientesLayout.setVerticalGroup(
             panel_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_clientesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14))
         );
 
         panel_conductores.setBackground(new java.awt.Color(234, 234, 234));
@@ -1165,23 +1196,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 102, 0));
         jLabel15.setText("Conductores");
+
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fa-tachometer.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_conductoresLayout = new javax.swing.GroupLayout(panel_conductores);
         panel_conductores.setLayout(panel_conductoresLayout);
         panel_conductoresLayout.setHorizontalGroup(
             panel_conductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_conductoresLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jLabel15)
-                .addGap(21, 21, 21))
+                .addGap(20, 20, 20))
+            .addGroup(panel_conductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_conductoresLayout.createSequentialGroup()
+                    .addGap(26, 26, 26)
+                    .addComponent(jLabel41)
+                    .addContainerGap(26, Short.MAX_VALUE)))
         );
         panel_conductoresLayout.setVerticalGroup(
             panel_conductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_conductoresLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel15))
+            .addGroup(panel_conductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_conductoresLayout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(jLabel41)
+                    .addContainerGap(23, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1813,7 +1857,11 @@ if((seleccion + 1)==1)
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
