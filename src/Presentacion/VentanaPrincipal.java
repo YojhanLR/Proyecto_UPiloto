@@ -23,18 +23,16 @@ import javax.swing.table.DefaultTableModel;
  * @author Yojhan
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    
-    
-    
-      Conductor objCond = new Conductor();
-      Bicicleta objBici = new Bicicleta();
+
+    Conductor objCond = new Conductor();
+    Bicicleta objBici = new Bicicleta();
+    Bus objBus = new Bus();
 
     /**
      * Creates new form VentanaPrincipal
      */
-    
-    public static ArrayList <Bus> buses = new ArrayList <>();
-    
+    public static ArrayList<Bus> buses = new ArrayList<>();
+
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
@@ -50,11 +48,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog_Bici = new javax.swing.JDialog();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_verBicis = new javax.swing.JButton();
+        btn_reservarBicis = new javax.swing.JButton();
         jDialog_Conductores = new javax.swing.JDialog();
         btn_verConductores = new javax.swing.JButton();
-        btnOpcionesDelConductor = new javax.swing.JButton();
+        btn_OpcionesConductor = new javax.swing.JButton();
         jDialog_Buses = new javax.swing.JDialog();
         btn_verBuses = new javax.swing.JButton();
         btn_verRutaA = new javax.swing.JButton();
@@ -89,6 +87,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnBuscarConductor = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         txtEstadoConductor = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         JDListadoConductores = new javax.swing.JDialog();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -101,18 +101,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnSalirListadoDeClientes = new javax.swing.JButton();
         JDListadoBicicletas = new javax.swing.JDialog();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
         btnVerBicicletas = new javax.swing.JButton();
-        txtIdBicicleta = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         ListaBicicletas = new javax.swing.JTable();
         btnRegistrarBicicleta = new javax.swing.JButton();
         btnEditarBicicleta = new javax.swing.JButton();
         btnEliminarBicicleta = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         cmbEstadoBicicleta = new javax.swing.JComboBox();
-        jLabel38 = new javax.swing.JLabel();
+        txtIdBicicleta = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         cmbNombreEstacionBicicletas = new javax.swing.JComboBox();
+        jLabel38 = new javax.swing.JLabel();
+        btn_volverAtrasBus1 = new javax.swing.JButton();
+        JDListadoBuses = new javax.swing.JDialog();
+        jLabel43 = new javax.swing.JLabel();
+        btnVerBuses = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        ListaBuses = new javax.swing.JTable();
+        btnRegistrarBus = new javax.swing.JButton();
+        btnEditarBus = new javax.swing.JButton();
+        btnEliminarBus = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        cmbEstadoBus = new javax.swing.JComboBox();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        txtMatriculaBus = new javax.swing.JTextField();
+        txtIdBus = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        txtUbicacion = new javax.swing.JTextField();
+        btn_volverAtrasBus = new javax.swing.JButton();
         JDReservarBicicleta = new javax.swing.JDialog();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -165,17 +185,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDialog_Bici.setMinimumSize(new java.awt.Dimension(300, 126));
         jDialog_Bici.setResizable(false);
 
-        jButton1.setText("Ver bicicletas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_verBicis.setText("Ver bicicletas");
+        btn_verBicis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_verBicisActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Reservar bicicleta");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_reservarBicis.setText("Reservar bicicleta");
+        btn_reservarBicis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_reservarBicisActionPerformed(evt);
             }
         });
 
@@ -186,17 +206,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialog_BiciLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                    .addComponent(btn_verBicis, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(btn_reservarBicis, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jDialog_BiciLayout.setVerticalGroup(
             jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog_BiciLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_verBicis, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_reservarBicis, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -212,10 +232,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnOpcionesDelConductor.setText("Opciones del Conductor");
-        btnOpcionesDelConductor.addActionListener(new java.awt.event.ActionListener() {
+        btn_OpcionesConductor.setText("Opciones del Conductor");
+        btn_OpcionesConductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpcionesDelConductorActionPerformed(evt);
+                btn_OpcionesConductorActionPerformed(evt);
             }
         });
 
@@ -227,7 +247,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jDialog_ConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_verConductores, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(btnOpcionesDelConductor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                    .addComponent(btn_OpcionesConductor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jDialog_ConductoresLayout.setVerticalGroup(
@@ -236,7 +256,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btn_verConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnOpcionesDelConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_OpcionesConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -314,13 +334,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDialog_Transfers.setResizable(false);
 
         btn_verTransfers.setText("Ver lista de transfers");
-        btn_verTransfers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_verTransfersActionPerformed(evt);
-            }
-        });
 
         btn_reservarTransfer.setText("Reservar transfer");
+        btn_reservarTransfer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reservarTransferActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDialog_TransfersLayout = new javax.swing.GroupLayout(jDialog_Transfers.getContentPane());
         jDialog_Transfers.getContentPane().setLayout(jDialog_TransfersLayout);
@@ -371,13 +391,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        JDOpcionesConductores.setMinimumSize(new java.awt.Dimension(500, 600));
+        JDOpcionesConductores.setTitle("Opciones de conductores");
+        JDOpcionesConductores.setMinimumSize(new java.awt.Dimension(530, 580));
+        JDOpcionesConductores.setPreferredSize(new java.awt.Dimension(530, 580));
+        JDOpcionesConductores.setResizable(false);
 
-        jLabel8.setText("SECCION CONDUCTORES");
+        jLabel8.setText("Opciones de conductores");
 
         jLabel9.setText("Id:");
 
-        jLabel10.setText("Cedula:");
+        jLabel10.setText("Cédula:");
 
         btnRegistrarConductor.setText("Registrar");
         btnRegistrarConductor.addActionListener(new java.awt.event.ActionListener() {
@@ -390,9 +413,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel17.setText("Edad:");
 
-        jLabel18.setText("Telefono:");
+        jLabel18.setText("Teléfono:");
 
-        jLabel19.setText("Direccion:");
+        jLabel19.setText("Dirección:");
 
         jLabel20.setText("Contraseña:");
 
@@ -437,77 +460,82 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JDOpcionesConductoresLayout.setHorizontalGroup(
             JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(54, 54, 54)
+                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
                         .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel16))
+                        .addGap(37, 37, 37)
+                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtIdConductor, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                    .addComponent(txtCedulaConductor))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBuscarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                                        .addComponent(jLabel18)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel16))
-                                        .addGap(37, 37, 37)
-                                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCedulaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                                                .addComponent(txtIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(96, 96, 96)
-                                                .addComponent(btnBuscarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                                        .addComponent(jLabel19)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                                        .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel20)
-                                            .addComponent(jLabel22))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtEstadoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
-                                        .addComponent(btnRegistrarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnEditarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEliminarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                                .addComponent(btnAtrasConductor)))))
-                .addContainerGap())
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18))
+                                .addGap(32, 32, 32)
+                                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createSequentialGroup()
+                                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel22))
+                                .addGap(19, 19, 19)
+                                .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEstadoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(161, 161, 161))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
+                            .addComponent(btnRegistrarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnEditarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnEliminarConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                            .addComponent(btnAtrasConductor))))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDOpcionesConductoresLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(172, 172, 172))
         );
         JDOpcionesConductoresLayout.setVerticalGroup(
             JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDOpcionesConductoresLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(33, 33, 33)
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarConductor))
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtCedulaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtNombreConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(txtEdadConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -515,11 +543,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(txtTelefonoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtDireccionConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(txtContrasenaConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -527,18 +555,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(txtEstadoConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(JDOpcionesConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarConductor)
                     .addComponent(btnEditarConductor)
                     .addComponent(btnEliminarConductor)
-                    .addComponent(btnAtrasConductor))
-                .addGap(24, 24, 24))
+                    .addComponent(btnAtrasConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
+        JDListadoConductores.setTitle("Lista de conductores");
         JDListadoConductores.setMinimumSize(new java.awt.Dimension(900, 450));
 
-        jLabel23.setText("LISTA DE CONDUCTORES");
+        jLabel23.setText("Lista de conductores ");
 
         ListaDeConductores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -553,7 +584,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ListaDeConductores);
 
-        btnSalirListadoDeConductores.setText("Salir");
+        btnSalirListadoDeConductores.setText("Volver atrás");
         btnSalirListadoDeConductores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirListadoDeConductoresActionPerformed(evt);
@@ -575,21 +606,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnSalirListadoDeConductores, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(327, 327, 327))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoConductoresLayout.createSequentialGroup()
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(291, 291, 291))))
+                        .addComponent(jLabel23)
+                        .addGap(358, 358, 358))))
         );
         JDListadoConductoresLayout.setVerticalGroup(
             JDListadoConductoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDListadoConductoresLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(btnSalirListadoDeConductores)
                 .addGap(23, 23, 23))
         );
 
+        JDListadoClientes.setTitle("Lista de clientes");
         JDListadoClientes.setMinimumSize(new java.awt.Dimension(900, 400));
         JDListadoClientes.setModal(true);
 
@@ -608,7 +640,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(ListaDeClientes);
 
-        btnSalirListadoDeClientes.setText("Salir");
+        btnSalirListadoDeClientes.setText("Volver atrás");
         btnSalirListadoDeClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirListadoDeClientesActionPerformed(evt);
@@ -645,24 +677,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        JDListadoBicicletas.setTitle("Opciones de bici-ágil");
         JDListadoBicicletas.setMinimumSize(new java.awt.Dimension(630, 530));
+        JDListadoBicicletas.setResizable(false);
 
         jLabel25.setText("OPCIONES DE BICICLETA");
-
-        jLabel26.setText("Id:");
-
-        jLabel27.setText("Estado:");
 
         btnVerBicicletas.setText("Ver Bicicletas");
         btnVerBicicletas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerBicicletasActionPerformed(evt);
-            }
-        });
-
-        txtIdBicicleta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdBicicletaActionPerformed(evt);
             }
         });
 
@@ -700,80 +724,281 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         cmbEstadoBicicleta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Libre", "Reservada" }));
         cmbEstadoBicicleta.setToolTipText("");
 
+        jLabel27.setText("Estado:");
+
+        jLabel26.setText("Id:");
+
         jLabel38.setText("Estacion:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel38))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbEstadoBicicleta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdBicicleta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbNombreEstacionBicicletas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(txtIdBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(cmbEstadoBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbNombreEstacionBicicletas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+
+        btn_volverAtrasBus1.setText("Volver atrás");
+        btn_volverAtrasBus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volverAtrasBus1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JDListadoBicicletasLayout = new javax.swing.GroupLayout(JDListadoBicicletas.getContentPane());
         JDListadoBicicletas.getContentPane().setLayout(JDListadoBicicletasLayout);
         JDListadoBicicletasLayout.setHorizontalGroup(
             JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDListadoBicicletasLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(btnEditarBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 198, Short.MAX_VALUE))
+            .addGroup(JDListadoBicicletasLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JDListadoBicicletasLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel38))
-                        .addGap(20, 20, 20)
-                        .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdBicicleta)
-                            .addComponent(cmbEstadoBicicleta, 0, 93, Short.MAX_VALUE)
-                            .addComponent(cmbNombreEstacionBicicletas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(JDListadoBicicletasLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(btnRegistrarBicicleta)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnEditarBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnEliminarBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addGap(104, 104, 104)
+                        .addComponent(btnEliminarBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBicicletasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBicicletasLayout.createSequentialGroup()
-                        .addComponent(btnVerBicicletas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
+                        .addComponent(btn_volverAtrasBus1)
+                        .addGap(87, 87, 87))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBicicletasLayout.createSequentialGroup()
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(195, 195, 195))))
+                        .addComponent(btnVerBicicletas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
         JDListadoBicicletasLayout.setVerticalGroup(
             JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDListadoBicicletasLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JDListadoBicicletasLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel26)
-                            .addComponent(txtIdBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(cmbEstadoBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel38)
-                            .addComponent(cmbNombreEstacionBicicletas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
+                .addGap(45, 45, 45)
+                .addComponent(btnVerBicicletas)
+                .addGap(18, 18, 18)
+                .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBicicletasLayout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(JDListadoBicicletasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrarBicicleta)
                             .addComponent(btnEditarBicicleta)
                             .addComponent(btnEliminarBicicleta)))
-                    .addGroup(JDListadoBicicletasLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(btnVerBicicletas)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(btn_volverAtrasBus1)
+                .addGap(21, 21, 21))
         );
 
+        JDListadoBuses.setTitle("Opciones de buses");
+        JDListadoBuses.setMinimumSize(new java.awt.Dimension(630, 530));
+        JDListadoBuses.setResizable(false);
+
+        jLabel43.setText("Opciones de Buses");
+
+        btnVerBuses.setText("Ver Buses");
+        btnVerBuses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerBusesActionPerformed(evt);
+            }
+        });
+
+        ListaBuses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane5.setViewportView(ListaBuses);
+
+        btnRegistrarBus.setText("Registrar");
+        btnRegistrarBus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarBusActionPerformed(evt);
+            }
+        });
+
+        btnEditarBus.setText("Editar");
+        btnEditarBus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarBusActionPerformed(evt);
+            }
+        });
+
+        btnEliminarBus.setText("Eliminar");
+        btnEliminarBus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarBusActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        cmbEstadoBus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Libre", "Reservada" }));
+        cmbEstadoBus.setToolTipText("");
+
+        jLabel47.setText("Matricula: ");
+
+        jLabel44.setText("Id:");
+
+        jLabel45.setText("Estado:");
+
+        jLabel46.setText("Ubicación");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel44)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel45)
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel46))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMatriculaBus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdBus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbEstadoBus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel44)
+                    .addComponent(txtIdBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(txtMatriculaBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel45)
+                    .addComponent(cmbEstadoBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
+        );
+
+        btn_volverAtrasBus.setText("Volver atrás");
+        btn_volverAtrasBus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volverAtrasBusActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JDListadoBusesLayout = new javax.swing.GroupLayout(JDListadoBuses.getContentPane());
+        JDListadoBuses.getContentPane().setLayout(JDListadoBusesLayout);
+        JDListadoBusesLayout.setHorizontalGroup(
+            JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDListadoBusesLayout.createSequentialGroup()
+                .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JDListadoBusesLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JDListadoBusesLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btnRegistrarBus)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
+                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(221, 221, 221))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
+                        .addComponent(btnVerBuses, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_volverAtrasBus)
+                .addGap(98, 98, 98))
+        );
+        JDListadoBusesLayout.setVerticalGroup(
+            JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDListadoBusesLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnVerBuses)
+                .addGap(18, 18, 18)
+                .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JDListadoBusesLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegistrarBus)
+                            .addComponent(btnEditarBus)
+                            .addComponent(btnEliminarBus)))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_volverAtrasBus)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        JDReservarBicicleta.setTitle("Reservar bici-ágil");
         JDReservarBicicleta.setMinimumSize(new java.awt.Dimension(650, 500));
 
         jLabel28.setText("RESERVAS DE BICICLETAS");
@@ -791,12 +1016,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel34.setText("Correo:");
 
         jLabel35.setText("Estado:");
-
-        txtDireccionClienteBicicleta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionClienteBicicletaActionPerformed(evt);
-            }
-        });
 
         cmbEstadoClienteBicicleta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Ocupado" }));
 
@@ -1277,6 +1496,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_panel_biciagilMouseClicked
 
     private void panel_conductoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_conductoresMouseClicked
+        cerrarDialogs();
         this.jDialog_Conductores.setVisible(true);
         jDialog_Conductores.setLocationRelativeTo(null);
     }//GEN-LAST:event_panel_conductoresMouseClicked
@@ -1336,11 +1556,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panel_clientes.setBackground(new Color(234, 234, 234));
     }//GEN-LAST:event_panel_clientesMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
+    private void btn_verBicisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verBicisActionPerformed
         this.JDListadoBicicletas.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.jDialog_Bici.setVisible(false);
+    }//GEN-LAST:event_btn_verBicisActionPerformed
 
     private void txtEdadConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadConductorActionPerformed
         // TODO add your handling code here:
@@ -1355,7 +1574,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             sentencia = conexion.getConexion().createStatement();
             ResultSet resultado = sentencia.executeQuery("select * from CONDUCTOR where CONDUCTOR_ID ="
                     + Integer.parseInt(this.txtIdConductor.getText()));
-
+            
+            if(!resultado.isBeforeFirst()){
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "No se encontraron registros." ,"Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
             while (resultado.next()) {
                 this.txtCedulaConductor.setText("" + resultado.getString("CEDULA"));
                 this.txtNombreConductor.setText("" + resultado.getString("NOMBRE"));
@@ -1365,14 +1588,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 this.txtContrasenaConductor.setText("" + resultado.getString("CONTRASEÑA"));
                 this.txtEstadoConductor.setText("" + resultado.getString("ESTADO"));
             }
-
+            
+            
+            
+            
             resultado.close();
             conexion.getConexion().close();
+            
+            
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
 
         }
     }//GEN-LAST:event_btnBuscarConductorActionPerformed
@@ -1383,56 +1611,45 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasConductorActionPerformed
 
     private void btn_verConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verConductoresActionPerformed
- 
+        this.jDialog_Conductores.setVisible(false);
         this.JDListadoConductores.setVisible(true);
-        
-        
-     
-        DefaultTableModel modelo=new DefaultTableModel(); 
- 
-     this.ListaDeConductores.setModel(modelo); 
-        ConectarBD conexion=new ConectarBD(); 
-        Statement sentencia; 
-        
-        try { 
-            sentencia=conexion.getConexion().createStatement(); 
-            ResultSet resultado=sentencia.executeQuery("SELECT * FROM CONDUCTOR "); 
-            ResultSetMetaData campos = resultado.getMetaData(); 
-            int cantidadColumnas = campos.getColumnCount(); 
-                for (int i = 1; i <= cantidadColumnas; i++) 
-                     { 
-                        modelo.addColumn(campos.getColumnLabel(i)); 
-                      } 
-                        while (resultado.next()) 
-                           { 
-                                Object[] fila = new Object[cantidadColumnas]; 
-                                     for (int i = 0; i < cantidadColumnas; i++) 
-                                         { 
-                                            fila[i]=resultado.getObject(i+1); 
-                                          } 
-                                 modelo.addRow(fila); 
-                            } 
-                        resultado.close(); 
-                        conexion.getConexion().close(); 
-                        
-                          
-            } 
-             catch(SQLException e ) 
-                { 
-                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
-                    ,JOptionPane.INFORMATION_MESSAGE); 
-                } 
-                    catch(Exception e) 
-                       { 
-                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
-                        ,JOptionPane.INFORMATION_MESSAGE); 
-                       }
 
-        
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        ConectarBD conexion = new ConectarBD();
+        Statement sentencia;
+
+        try {
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT * FROM CONDUCTOR ");
+            ResultSetMetaData campos = resultado.getMetaData();
+            int cantidadColumnas = campos.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                modelo.addColumn(campos.getColumnLabel(i));
+            }
+            while (resultado.next()) {
+                Object[] fila = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    fila[i] = resultado.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+            resultado.close();
+            conexion.getConexion().close();
+            this.ListaDeConductores.setModel(modelo);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(JDListadoConductores, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JDListadoConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btn_verConductoresActionPerformed
 
     private void btn_verBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verBusesActionPerformed
-        // TODO add your handling code here:
+        this.JDListadoBuses.setVisible(true);
+        this.jDialog_Buses.setVisible(false);
     }//GEN-LAST:event_btn_verBusesActionPerformed
 
     private void btn_verRutaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaAActionPerformed
@@ -1453,303 +1670,235 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         vr.setVisible(true);
     }//GEN-LAST:event_btn_verRutaCActionPerformed
 
-    private void btn_verTransfersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verTransfersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_verTransfersActionPerformed
-
     private void btn_verClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verClientesActionPerformed
-        // TODO add your handling code here:
-        
-        this.JDListadoClientes.setVisible(true);
-        
-        
-     
-        DefaultTableModel modelo=new DefaultTableModel(); 
- 
-     this.ListaDeClientes.setModel(modelo); 
-        ConectarBD conexion=new ConectarBD(); 
-        Statement sentencia; 
-        
-        try { 
-            sentencia=conexion.getConexion().createStatement(); 
-            ResultSet resultado=sentencia.executeQuery("SELECT * FROM USUARIO "); 
-            ResultSetMetaData campos = resultado.getMetaData(); 
-            int cantidadColumnas = campos.getColumnCount(); 
-                for (int i = 1; i <= cantidadColumnas; i++) 
-                     { 
-                        modelo.addColumn(campos.getColumnLabel(i)); 
-                      } 
-                        while (resultado.next()) 
-                           { 
-                                Object[] fila = new Object[cantidadColumnas]; 
-                                     for (int i = 0; i < cantidadColumnas; i++) 
-                                         { 
-                                            fila[i]=resultado.getObject(i+1); 
-                                          } 
-                                 modelo.addRow(fila); 
-                            } 
-                        resultado.close(); 
-                        conexion.getConexion().close(); 
-                        
-                          
-            } 
-             catch(SQLException e ) 
-                { 
-                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
-                    ,JOptionPane.INFORMATION_MESSAGE); 
-                } 
-                    catch(Exception e) 
-                       { 
-                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
-                        ,JOptionPane.INFORMATION_MESSAGE); 
-                       }
+        this.jDialog_Clientes.setVisible(false);
 
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        this.ListaDeClientes.setModel(modelo);
+        ConectarBD conexion = new ConectarBD();
+        Statement sentencia;
+
+        try {
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT * FROM USUARIO ");
+            ResultSetMetaData campos = resultado.getMetaData();
+            int cantidadColumnas = campos.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                modelo.addColumn(campos.getColumnLabel(i));
+            }
+            while (resultado.next()) {
+                Object[] fila = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    fila[i] = resultado.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+            resultado.close();
+            conexion.getConexion().close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        this.JDListadoClientes.setVisible(true);
     }//GEN-LAST:event_btn_verClientesActionPerformed
 
-    private void btnOpcionesDelConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesDelConductorActionPerformed
+    private void btn_OpcionesConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_OpcionesConductorActionPerformed
         // TODO add your handling code here:
         this.JDOpcionesConductores.setVisible(true);
         this.jDialog_Conductores.setVisible(false);
-        
+
         this.txtIdConductor.setText("");
-         this.txtCedulaConductor.setText("");
-         this.txtNombreConductor.setText("");
-         this.txtEdadConductor.setText("");
-         this.txtTelefonoConductor.setText("");
-         this.txtDireccionConductor.setText("");
-         this.txtContrasenaConductor.setText("");
-         this.txtEstadoConductor.setText("");
-        
-    }//GEN-LAST:event_btnOpcionesDelConductorActionPerformed
+        this.txtCedulaConductor.setText("");
+        this.txtNombreConductor.setText("");
+        this.txtEdadConductor.setText("");
+        this.txtTelefonoConductor.setText("");
+        this.txtDireccionConductor.setText("");
+        this.txtContrasenaConductor.setText("");
+        this.txtEstadoConductor.setText("");
+
+    }//GEN-LAST:event_btn_OpcionesConductorActionPerformed
 
     private void btnRegistrarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarConductorActionPerformed
         // TODO add your handling code here:
-        
-         try
-        {
-         objCond.guardarCond(this.txtIdConductor.getText(), this.txtCedulaConductor.getText(), this.txtNombreConductor.getText(),
-                this.txtEdadConductor.getText(),this.txtTelefonoConductor.getText(),this.txtDireccionConductor.getText(),
-                this.txtContrasenaConductor.getText(),this.txtEstadoConductor.getText());
-         
-         this.txtIdConductor.setText("");
-         this.txtCedulaConductor.setText("");
-         this.txtNombreConductor.setText("");
-         this.txtEdadConductor.setText("");
-         this.txtTelefonoConductor.setText("");
-         this.txtDireccionConductor.setText("");
-         this.txtContrasenaConductor.setText("");
-         this.txtEstadoConductor.setText("");
-         
-        } catch (NumberFormatException e) 
-                {
-                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
-                           JOptionPane.WARNING_MESSAGE);
-                }
-        
+
+        try {
+            objCond.guardarCond(this.txtIdConductor.getText(), this.txtCedulaConductor.getText(), this.txtNombreConductor.getText(),
+                    this.txtEdadConductor.getText(), this.txtTelefonoConductor.getText(), this.txtDireccionConductor.getText(),
+                    this.txtContrasenaConductor.getText(), this.txtEstadoConductor.getText());
+
+            this.txtIdConductor.setText("");
+            this.txtCedulaConductor.setText("");
+            this.txtNombreConductor.setText("");
+            this.txtEdadConductor.setText("");
+            this.txtTelefonoConductor.setText("");
+            this.txtDireccionConductor.setText("");
+            this.txtContrasenaConductor.setText("");
+            this.txtEstadoConductor.setText("");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnRegistrarConductorActionPerformed
 
     private void btnEditarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConductorActionPerformed
         // TODO add your handling code here:
-        
-           try
-        {
-         objCond.actualizarCond(this.txtIdConductor.getText(), this.txtCedulaConductor.getText(), this.txtNombreConductor.getText(),
-                this.txtEdadConductor.getText(),this.txtTelefonoConductor.getText(),this.txtDireccionConductor.getText(),
-                this.txtContrasenaConductor.getText(),this.txtEstadoConductor.getText());
-         
-         this.txtIdConductor.setText("");
-         this.txtCedulaConductor.setText("");
-         this.txtNombreConductor.setText("");
-         this.txtEdadConductor.setText("");
-         this.txtTelefonoConductor.setText("");
-         this.txtDireccionConductor.setText("");
-         this.txtContrasenaConductor.setText("");
-         this.txtEstadoConductor.setText("");
-         
-        } catch (NumberFormatException e) 
-                {
-                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
-                           JOptionPane.WARNING_MESSAGE);
-                }
-        
+
+        try {
+            objCond.actualizarCond(this.txtIdConductor.getText(), this.txtCedulaConductor.getText(), this.txtNombreConductor.getText(),
+                    this.txtEdadConductor.getText(), this.txtTelefonoConductor.getText(), this.txtDireccionConductor.getText(),
+                    this.txtContrasenaConductor.getText(), this.txtEstadoConductor.getText());
+
+            this.txtIdConductor.setText("");
+            this.txtCedulaConductor.setText("");
+            this.txtNombreConductor.setText("");
+            this.txtEdadConductor.setText("");
+            this.txtTelefonoConductor.setText("");
+            this.txtDireccionConductor.setText("");
+            this.txtContrasenaConductor.setText("");
+            this.txtEstadoConductor.setText("");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnEditarConductorActionPerformed
 
     private void btnEliminarConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarConductorActionPerformed
         // TODO add your handling code here:
-        
-        int seleccion = JOptionPane.showOptionDialog(this,"¿DESEA ELIMINAR EL REGISTRO(Si/No)","Seleccione una opción",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,null,new Object[] { "Si", "No"},"Si");
-if((seleccion + 1)==1)
-    {
-            try{
-        
-            objCond.eliminarCond(this.txtIdConductor.getText());
-             
-          
-          
-           } catch (NumberFormatException e) 
-                {
-                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
-                           JOptionPane.WARNING_MESSAGE);
-                }
-            
-    }else
-{
-    JOptionPane.showMessageDialog(this,"REGISTRO NO ELIMINADO","Información",
-            JOptionPane.INFORMATION_MESSAGE);
-}
 
-         this.txtIdConductor.setText("");
-         this.txtCedulaConductor.setText("");
-         this.txtNombreConductor.setText("");
-         this.txtEdadConductor.setText("");
-         this.txtTelefonoConductor.setText("");
-         this.txtDireccionConductor.setText("");
-         this.txtContrasenaConductor.setText("");
-         this.txtEstadoConductor.setText("");
+        int seleccion = JOptionPane.showOptionDialog(this, "¿DESEA ELIMINAR EL REGISTRO(Si/No)", "Seleccione una opción",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Si", "No"}, "Si");
+        if ((seleccion + 1) == 1) {
+            try {
+
+                objCond.eliminarCond(this.txtIdConductor.getText());
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "REGISTRO NO ELIMINADO", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        this.txtIdConductor.setText("");
+        this.txtCedulaConductor.setText("");
+        this.txtNombreConductor.setText("");
+        this.txtEdadConductor.setText("");
+        this.txtTelefonoConductor.setText("");
+        this.txtDireccionConductor.setText("");
+        this.txtContrasenaConductor.setText("");
+        this.txtEstadoConductor.setText("");
     }//GEN-LAST:event_btnEliminarConductorActionPerformed
 
     private void btnSalirListadoDeConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirListadoDeConductoresActionPerformed
-
-        this.JDListadoConductores.hide();
-        
-        // TODO add your handling code here:
+        this.JDListadoConductores.setVisible(false);
+        this.jDialog_Conductores.setVisible(true);
     }//GEN-LAST:event_btnSalirListadoDeConductoresActionPerformed
 
     private void btnSalirListadoDeClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirListadoDeClientesActionPerformed
-
         this.JDListadoClientes.setVisible(false);
-        // TODO add your handling code here:
+        this.jDialog_Clientes.setVisible(true);
     }//GEN-LAST:event_btnSalirListadoDeClientesActionPerformed
 
-    private void txtIdBicicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdBicicletaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdBicicletaActionPerformed
-
     private void btnVerBicicletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerBicicletasActionPerformed
-        // TODO add your handling code here:
-        
-        
-       
-     
-        DefaultTableModel modelo=new DefaultTableModel(); 
- 
-     this.ListaBicicletas.setModel(modelo); 
-        ConectarBD conexion=new ConectarBD(); 
-        Statement sentencia; 
-        
-        try { 
-            sentencia=conexion.getConexion().createStatement(); 
-            ResultSet resultado=sentencia.executeQuery("SELECT * FROM BICICLETA "); 
-            ResultSetMetaData campos = resultado.getMetaData(); 
-            int cantidadColumnas = campos.getColumnCount(); 
-                for (int i = 1; i <= cantidadColumnas; i++) 
-                     { 
-                        modelo.addColumn(campos.getColumnLabel(i)); 
-                      } 
-                        while (resultado.next()) 
-                           { 
-                                Object[] fila = new Object[cantidadColumnas]; 
-                                     for (int i = 0; i < cantidadColumnas; i++) 
-                                         { 
-                                            fila[i]=resultado.getObject(i+1); 
-                                          } 
-                                 modelo.addRow(fila); 
-                            } 
-                        resultado.close(); 
-                        conexion.getConexion().close(); 
-                        
-                          
-            } 
-             catch(SQLException e ) 
-                { 
-                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
-                    ,JOptionPane.INFORMATION_MESSAGE); 
-                } 
-                    catch(Exception e) 
-                       { 
-                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
-                        ,JOptionPane.INFORMATION_MESSAGE); 
-                       }
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        this.ListaBicicletas.setModel(modelo);
+        ConectarBD conexion = new ConectarBD();
+        Statement sentencia;
+
+        try {
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT * FROM BICICLETA ");
+            ResultSetMetaData campos = resultado.getMetaData();
+            int cantidadColumnas = campos.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                modelo.addColumn(campos.getColumnLabel(i));
+            }
+            while (resultado.next()) {
+                Object[] fila = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    fila[i] = resultado.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+            resultado.close();
+            conexion.getConexion().close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnVerBicicletasActionPerformed
 
     private void btnRegistrarBicicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarBicicletaActionPerformed
-        // TODO add your handling code here
-        
-          try
-        {
-         objBici.guardarBici(this.txtIdBicicleta.getText(), this.cmbEstadoBicicleta.getSelectedItem().toString());
-         
-         this.txtIdBicicleta.setText("");
-         
-        } catch (NumberFormatException e) 
-                {
-                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
-                           JOptionPane.WARNING_MESSAGE);
-                }
+        try {
+            objBici.guardarBici(this.txtIdBicicleta.getText(), this.cmbEstadoBicicleta.getSelectedItem().toString());
+
+            this.txtIdBicicleta.setText("");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnRegistrarBicicletaActionPerformed
 
     private void btnEditarBicicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarBicicletaActionPerformed
-        // TODO add your handling code here:
-        
-            try
-        {
-         objBici.actualizarBici(this.txtIdBicicleta.getText(),this.cmbEstadoBicicleta.getSelectedItem().toString());
+        try {
+            objBici.actualizarBici(this.txtIdBicicleta.getText(), this.cmbEstadoBicicleta.getSelectedItem().toString());
 
-   
-         
-        } catch (NumberFormatException e) 
-                {
-                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
-                           JOptionPane.WARNING_MESSAGE);
-                }
-         this.txtIdBicicleta.setText("");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        this.txtIdBicicleta.setText("");
     }//GEN-LAST:event_btnEditarBicicletaActionPerformed
 
     private void btnEliminarBicicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarBicicletaActionPerformed
         // TODO add your handling code here:
-        
-        
-         int seleccion = JOptionPane.showOptionDialog(this,"¿DESEA ELIMINAR EL REGISTRO(Si/No)","Seleccione una opción",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,null,new Object[] { "Si", "No"},"Si");
-if((seleccion + 1)==1)
-    {
-            try{
-        
-            objBici.eliminarBici(this.txtIdBicicleta.getText());
-             
-          
-          
-           } catch (NumberFormatException e) 
-                {
-                   JOptionPane.showMessageDialog(this,"Error" + e,"Informacion",
-                           JOptionPane.WARNING_MESSAGE);
-                }
-            
-    }else
-{
-    JOptionPane.showMessageDialog(this,"REGISTRO NO ELIMINADO","Información",
-            JOptionPane.INFORMATION_MESSAGE);
-}
 
-         this.txtIdBicicleta.setText("");
+        int seleccion = JOptionPane.showOptionDialog(this, "¿DESEA ELIMINAR EL REGISTRO(Si/No)", "Seleccione una opción",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Si", "No"}, "Si");
+        if ((seleccion + 1) == 1) {
+            try {
+
+                objBici.eliminarBici(this.txtIdBicicleta.getText());
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "REGISTRO NO ELIMINADO", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        this.txtIdBicicleta.setText("");
 
 
     }//GEN-LAST:event_btnEliminarBicicletaActionPerformed
 
-    private void txtDireccionClienteBicicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionClienteBicicletaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionClienteBicicletaActionPerformed
+    private void btn_reservarBicisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reservarBicisActionPerformed
+        this.jDialog_Bici.setVisible(false);
+        this.JDReservarBicicleta.setVisible(true);
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        this.JDReservarBicicleta.setEnabled(true);
-        
-         try {
+        try {
 
             ConectarBD conexion = new ConectarBD();
             Statement sentencia;
@@ -1767,7 +1916,7 @@ if((seleccion + 1)==1)
             while (resultado.next()) {
                 this.cmbIdBicicletaReserva.addItem("" + resultado.getString("BICICLETA_ID"));
             }
-            
+
             resultado.close();
             resultado2.close();
             conexion.getConexion().close();
@@ -1778,34 +1927,141 @@ if((seleccion + 1)==1)
             JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
 
         }
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
+
+    }//GEN-LAST:event_btn_reservarBicisActionPerformed
+
+    private void btnEliminarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarBusActionPerformed
+        int seleccion = JOptionPane.showOptionDialog(this, "¿Esta seguro de eliminar este registro?(Si/No)", "Seleccione una opción",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Si", "No"}, "Si");
+        if ((seleccion + 1) == 1) {
+            try {
+                objBus.eliminarBus(Integer.parseInt(this.txtIdBus.getText()));
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "REGISTRO NO ELIMINADO", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        this.txtIdBicicleta.setText("");
+    }//GEN-LAST:event_btnEliminarBusActionPerformed
+
+    private void btnEditarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarBusActionPerformed
+        try {
+            objBus.actualizarBus(Integer.parseInt(this.txtIdBus.getText()), this.cmbEstadoBus.getSelectedItem().toString(), this.txtMatriculaBus.getText(), this.txtUbicacion.getText());
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        this.txtIdBicicleta.setText("");
+    }//GEN-LAST:event_btnEditarBusActionPerformed
+
+    private void btnRegistrarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarBusActionPerformed
+        try {
+            objBus.guardarBus(Integer.parseInt(this.txtIdBus.getText()), this.cmbEstadoBus.getSelectedItem().toString(), this.txtMatriculaBus.getText(), this.txtUbicacion.getText());
+
+            this.txtIdBus.setText("");
+            this.txtMatriculaBus.setText("");
+            this.txtUbicacion.setText("");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error" + e, "Informacion",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRegistrarBusActionPerformed
+
+    private void btnVerBusesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerBusesActionPerformed
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        this.ListaBuses.setModel(modelo);
+        ConectarBD conexion = new ConectarBD();
+        Statement sentencia;
+
+        try {
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT * FROM BUS");
+            ResultSetMetaData campos = resultado.getMetaData();
+            int cantidadColumnas = campos.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                modelo.addColumn(campos.getColumnLabel(i));
+            }
+            while (resultado.next()) {
+                Object[] fila = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    fila[i] = resultado.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+            resultado.close();
+            conexion.getConexion().close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnVerBusesActionPerformed
+
+    private void btn_volverAtrasBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverAtrasBusActionPerformed
+        this.JDListadoBuses.setVisible(false);
+        this.jDialog_Buses.setVisible(true);
+    }//GEN-LAST:event_btn_volverAtrasBusActionPerformed
+
+    private void btn_reservarTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reservarTransferActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_reservarTransferActionPerformed
+
+    private void btn_volverAtrasBus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverAtrasBus1ActionPerformed
+        this.jDialog_Bici.setVisible(true);
+        this.JDListadoBicicletas.setVisible(false);
+    }//GEN-LAST:event_btn_volverAtrasBus1ActionPerformed
+
+    private void cerrarDialogs() {
+        this.jDialog_Bici.setVisible(false);
+        this.jDialog_Buses.setVisible(false);
+        this.jDialog_Clientes.setVisible(false);
+        this.jDialog_Conductores.setVisible(false);
+        this.jDialog_Transfers.setVisible(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog JDListadoBicicletas;
+    private javax.swing.JDialog JDListadoBuses;
     private javax.swing.JDialog JDListadoClientes;
     private javax.swing.JDialog JDListadoConductores;
     private javax.swing.JDialog JDOpcionesConductores;
     private javax.swing.JDialog JDReservarBicicleta;
     private javax.swing.JTable ListaBicicletas;
+    private javax.swing.JTable ListaBuses;
     private javax.swing.JTable ListaDeClientes;
     private javax.swing.JTable ListaDeConductores;
     private javax.swing.JButton btnAtrasConductor;
     private javax.swing.JButton btnBuscarConductor;
     private javax.swing.JButton btnEditarBicicleta;
+    private javax.swing.JButton btnEditarBus;
     private javax.swing.JButton btnEditarConductor;
     private javax.swing.JButton btnEliminarBicicleta;
+    private javax.swing.JButton btnEliminarBus;
     private javax.swing.JButton btnEliminarConductor;
-    private javax.swing.JButton btnOpcionesDelConductor;
     private javax.swing.JButton btnRegistrarBicicleta;
+    private javax.swing.JButton btnRegistrarBus;
     private javax.swing.JButton btnRegistrarConductor;
     private javax.swing.JButton btnReservarBicicleta;
     private javax.swing.JButton btnSalirListadoDeClientes;
     private javax.swing.JButton btnSalirListadoDeConductores;
     private javax.swing.JButton btnVerBicicletas;
+    private javax.swing.JButton btnVerBuses;
+    private javax.swing.JButton btn_OpcionesConductor;
+    private javax.swing.JButton btn_reservarBicis;
     private javax.swing.JButton btn_reservarTransfer;
+    private javax.swing.JButton btn_verBicis;
     private javax.swing.JButton btn_verBuses;
     private javax.swing.JButton btn_verClientes;
     private javax.swing.JButton btn_verConductores;
@@ -1813,13 +2069,14 @@ if((seleccion + 1)==1)
     private javax.swing.JButton btn_verRutaB;
     private javax.swing.JButton btn_verRutaC;
     private javax.swing.JButton btn_verTransfers;
+    private javax.swing.JButton btn_volverAtrasBus;
+    private javax.swing.JButton btn_volverAtrasBus1;
     private javax.swing.JComboBox cmbEstadoBicicleta;
+    private javax.swing.JComboBox cmbEstadoBus;
     private javax.swing.JComboBox cmbEstadoClienteBicicleta;
     private javax.swing.JComboBox cmbIdBicicletaReserva;
     private javax.swing.JComboBox cmbNombreEstacionBicicletas;
     private javax.swing.JComboBox cmbNombreEstacionReservaBici;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog_Bici;
     private javax.swing.JDialog jDialog_Buses;
     private javax.swing.JDialog jDialog_Clientes;
@@ -1862,15 +2119,25 @@ if((seleccion + 1)==1)
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel label_correo;
     private javax.swing.JLabel label_nombre;
     private javax.swing.JLabel label_username;
@@ -1890,10 +2157,13 @@ if((seleccion + 1)==1)
     private javax.swing.JTextField txtEdadConductor;
     private javax.swing.JTextField txtEstadoConductor;
     private javax.swing.JTextField txtIdBicicleta;
+    private javax.swing.JTextField txtIdBus;
     private javax.swing.JTextField txtIdConductor;
+    private javax.swing.JTextField txtMatriculaBus;
     private javax.swing.JTextField txtNombreClienteBicicleta;
     private javax.swing.JTextField txtNombreConductor;
     private javax.swing.JTextField txtTelefonoClienteBicicleta;
     private javax.swing.JTextField txtTelefonoConductor;
+    private javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
 }

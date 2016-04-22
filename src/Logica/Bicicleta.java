@@ -13,102 +13,82 @@ import javax.swing.JOptionPane;
  * @author HECTOR
  */
 public class Bicicleta {
-    
-     public void guardarBici(String a,String b){
-    
-try{
-            ConectarBD conexion= new ConectarBD();
-            
+
+    public void guardarBici(String a, String b) {
+
+        try {
+            ConectarBD conexion = new ConectarBD();
+
             int id = Integer.parseInt(a);
-            String estado= b;
-         
-            String instruccion="insert into BICICLETA values (?,?)";
-            conexion.sentencia=conexion.getConexion().prepareStatement(instruccion);
+            String estado = b;
+
+            String instruccion = "insert into BICICLETA values (?,?)";
+            conexion.sentencia = conexion.getConexion().prepareStatement(instruccion);
             conexion.sentencia.setInt(1, id);
             conexion.sentencia.setString(2, estado);
-            
-        
 
             conexion.sentencia.execute();
             conexion.getConexion().close();
-            
-            JOptionPane.showMessageDialog(null,"Registro Insertado","Información",
-                                                    JOptionPane.INFORMATION_MESSAGE);
-            }
-            catch(SQLException j)
-            {
-           
-                JOptionPane.showMessageDialog(null,"Error:"+j,"Información",
-                                                    JOptionPane.WARNING_MESSAGE);
-            }
 
+            JOptionPane.showMessageDialog(null, "Registro Insertado", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException j) {
 
-}  
-  
-  public void actualizarBici(String a,String b)
-  {   
-         
-         try{
-            
-            ConectarBD conexion= new ConectarBD();
+            JOptionPane.showMessageDialog(null, "Error:" + j, "Información",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+
+    public void actualizarBici(String a, String b) {
+
+        try {
+
+            ConectarBD conexion = new ConectarBD();
             int id = Integer.parseInt(a);
-            String estado= b;
-           
+            String estado = b;
 
-             String instruccion= "Update BICICLETA set ESTADO=?"
-                     + "where BICICLETA_ID="+id;
-            conexion.sentencia=conexion.getConexion().prepareStatement(instruccion);
-            
+            String instruccion = "Update BICICLETA set ESTADO=?"
+                    + "where BICICLETA_ID=" + id;
+            conexion.sentencia = conexion.getConexion().prepareStatement(instruccion);
+
             conexion.sentencia.setString(1, estado);
-          
 
             conexion.sentencia.execute();
             conexion.getConexion().close();
-            
-            JOptionPane.showMessageDialog(null,"Registro Actualizado","Información",
-                                                    JOptionPane.INFORMATION_MESSAGE);
-           
-         }
-        catch (Exception j){
-            
-            JOptionPane.showMessageDialog(null,"Error:"+j,"Información",
-                                                    JOptionPane.WARNING_MESSAGE);
 
-              }
-          
-  }
-    
-  
-   public void eliminarBici(String a)
-   {
-       
-          
-         try{
-             ConectarBD conexion= new ConectarBD();
+            JOptionPane.showMessageDialog(null, "Registro Actualizado", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception j) {
+
+            JOptionPane.showMessageDialog(null, "Error:" + j, "Información",
+                    JOptionPane.WARNING_MESSAGE);
+
+        }
+
+    }
+
+    public void eliminarBici(String a) {
+
+        try {
+            ConectarBD conexion = new ConectarBD();
             int id = Integer.parseInt(a);
-            
-       
-            
-            String instruccion= "Delete from BICICLETA "
-                     + "where BICICLETA_ID='" +id+"'";
-            conexion.sentencia=conexion.getConexion().prepareStatement(instruccion);
+
+            String instruccion = "Delete from BICICLETA "
+                    + "where BICICLETA_ID='" + id + "'";
+            conexion.sentencia = conexion.getConexion().prepareStatement(instruccion);
             conexion.sentencia.execute();
-            
-            
-            
-            
+
             conexion.getConexion().close();
-             JOptionPane.showMessageDialog(null,"REGISTRO ELIMINADO","Información",
-                                                    JOptionPane.INFORMATION_MESSAGE);
-            }
-            catch(SQLException e)
-            {
-             
-                JOptionPane.showMessageDialog(null,"Error:"+e,"Información",
-                                                    JOptionPane.WARNING_MESSAGE);
-            }
-            
-            
-   }
-    
+            JOptionPane.showMessageDialog(null, "REGISTRO ELIMINADO", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, "Error:" + e, "Información",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+
 }
