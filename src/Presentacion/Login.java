@@ -4,6 +4,15 @@
  * and open the template in the editor.
  */
 package Presentacion;
+
+import Logica.ConectarBD;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
+
 /**
  *
  * @author Yojhan
@@ -33,7 +42,7 @@ public class Login extends javax.swing.JFrame {
         tf_password = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio sesión - Módulo Administrador");
@@ -51,10 +60,10 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña: ");
 
-        jButton1.setText("Iniciar sesión");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_login.setText("Iniciar sesión");
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_loginActionPerformed(evt);
             }
         });
 
@@ -74,7 +83,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btn_login)
                 .addGap(133, 133, 133))
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,7 +98,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(tf_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -118,11 +127,45 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
-        this.setVisible(false);
-        vp.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        
+        char claves[] = tf_password.getPassword();
+        String password = new String(claves);
+        String username = tf_usuario.getText();
+
+        if (password.isEmpty() || username.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor digite un usuario y contraseña válidos", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            String encrypted = DigestUtils.md5Hex(password); //Convierte la contraseña a encriptación MD5
+            //System.out.println(password);
+            //System.out.println(encrypted);
+            
+            ConectarBD conexion = new ConectarBD();
+            Statement sentencia;
+
+            try {
+                sentencia = conexion.getConexion().createStatement();
+                ResultSet resultado = sentencia.executeQuery("SELECT PASSWORD FROM ADMINISTRADOR WHERE USERNAME = '"+username+"'");
+                resultado.next();
+                String passwordReal = resultado.getNString(1);
+                
+                resultado.close();
+                conexion.getConexion().close();
+                
+                if(encrypted.equals(passwordReal)){
+                    JOptionPane.showMessageDialog(this, "¡Bienvenido "+username+"!", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    VentanaPrincipal vp = new VentanaPrincipal();
+                    this.setVisible(false);
+                    vp.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Por favor verifique su usuario y contraseña e intente de nuevo.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Por favor verifique su usuario y contraseña e intente de nuevo.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } 
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +203,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
