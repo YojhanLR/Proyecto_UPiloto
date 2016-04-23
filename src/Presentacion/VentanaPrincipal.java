@@ -152,6 +152,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtIdBus = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         txtUbicacion = new javax.swing.JTextField();
+        btnCargarBus = new javax.swing.JLabel();
         btn_volverAtrasBus = new javax.swing.JButton();
         JDReservarBicicleta = new javax.swing.JDialog();
         jLabel28 = new javax.swing.JLabel();
@@ -1025,7 +1026,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         JDListadoBuses.setTitle("Opciones de buses");
-        JDListadoBuses.setMinimumSize(new java.awt.Dimension(630, 530));
+        JDListadoBuses.setMinimumSize(new java.awt.Dimension(740, 530));
         JDListadoBuses.setResizable(false);
 
         jLabel43.setText("Opciones de Buses");
@@ -1073,7 +1074,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        cmbEstadoBus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Libre", "Reservada" }));
+        cmbEstadoBus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Libre", "En recorrido" }));
         cmbEstadoBus.setToolTipText("");
 
         jLabel47.setText("Matricula: ");
@@ -1084,50 +1085,64 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel46.setText("Ubicación");
 
+        btnCargarBus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/owi-opensearch.png"))); // NOI18N
+        btnCargarBus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCargarBusMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel46)
+                    .addComponent(jLabel47)
+                    .addComponent(jLabel44))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel44)
-                        .addGap(54, 54, 54))
+                        .addGap(32, 32, 32)
+                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(18, 33, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel45)
-                            .addComponent(jLabel47)
-                            .addComponent(jLabel46))
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMatriculaBus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdBus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbEstadoBus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cmbEstadoBus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtMatriculaBus, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtIdBus, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCargarBus)
+                                .addGap(9, 9, 9))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel44)
+                        .addComponent(txtIdBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCargarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel44)
-                    .addComponent(txtIdBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel47)
-                    .addComponent(txtMatriculaBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(txtMatriculaBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel47))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
                     .addComponent(cmbEstadoBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel46)
-                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel46))
+                .addGap(19, 19, 19))
         );
 
         btn_volverAtrasBus.setText("Volver atrás");
@@ -1143,39 +1158,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDListadoBusesLayout.createSequentialGroup()
                 .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(btnRegistrarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnEliminarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JDListadoBusesLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JDListadoBusesLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnRegistrarBus)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarBus, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(333, Short.MAX_VALUE)
                 .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
-                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(221, 221, 221))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
                         .addComponent(btnVerBuses, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_volverAtrasBus)
-                .addGap(98, 98, 98))
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
+                        .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDListadoBusesLayout.createSequentialGroup()
+                        .addComponent(btn_volverAtrasBus)
+                        .addGap(150, 150, 150))))
         );
         JDListadoBusesLayout.setVerticalGroup(
             JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JDListadoBusesLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnVerBuses)
                 .addGap(18, 18, 18)
                 .addGroup(JDListadoBusesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1187,9 +1201,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(btnEditarBus)
                             .addComponent(btnEliminarBus)))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_volverAtrasBus)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         JDReservarBicicleta.setTitle("Reservar bici-ágil");
@@ -1807,7 +1821,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
-
         }
     }//GEN-LAST:event_btnBuscarConductorActionPerformed
 
@@ -2320,6 +2333,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReservarBicicletaActionPerformed
 
+    private void btnCargarBusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarBusMouseClicked
+        try {
+
+            ConectarBD conexion = new ConectarBD();
+            Statement sentencia;
+
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("select * from BUS where BUS_ID ="
+                    + Integer.parseInt(this.txtIdBus.getText()));
+
+            if (!resultado.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(txtIdBus, "No se encontraron registros.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            while (resultado.next()) {
+                this.txtMatriculaBus.setText("" + resultado.getString("MATRICULA"));
+                this.txtUbicacion.setText("" + resultado.getString("UBICACION"));
+
+                if (resultado.getString("ESTADO").equals("Libre")) {
+                    cmbEstadoBus.setSelectedItem("Libre");
+                } else {
+
+                    cmbEstadoBus.setSelectedItem("En recorrido");
+                }
+
+            }
+
+            resultado.close();
+            conexion.getConexion().close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error: Ingrese un id válido e intente de nuevo.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCargarBusMouseClicked
+
     private void cerrarDialogs() {
         this.jDialog_Bici.setVisible(false);
         this.jDialog_Buses.setVisible(false);
@@ -2343,6 +2394,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable ListaTransfers;
     private javax.swing.JButton btnAtrasConductor;
     private javax.swing.JButton btnBuscarConductor;
+    private javax.swing.JLabel btnCargarBus;
     private javax.swing.JButton btnEditarBicicleta;
     private javax.swing.JButton btnEditarBus;
     private javax.swing.JButton btnEditarConductor;
