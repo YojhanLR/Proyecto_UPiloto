@@ -54,8 +54,6 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tf_password.setText("jPasswordField1");
-
         jLabel1.setText("Usuario:");
 
         jLabel2.setText("Contraseña: ");
