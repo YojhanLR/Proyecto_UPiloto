@@ -13,6 +13,10 @@ import Logica.PosicionBus;
 import Logica.Ruta;
 import Logica.Transfer;
 import java.awt.Color;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -46,6 +50,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
         initThreads();
+        
+        try {
+                servidor= new DatagramSocket( 5000 );
+            }
+            catch( SocketException errorSocket )
+            {
+                JOptionPane.showMessageDialog( null, "Error en el Socket"+errorSocket,
+                    "Información", JOptionPane.PLAIN_MESSAGE );
+                System.exit( 1 );
+            }
     }
     
     private void initThreads(){
@@ -161,6 +175,101 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+    
+    
+    
+     private DatagramSocket servidor;
+     String Consulta, Consulta2;
+    
+    
+     public void esperarPaquetes()
+    {
+        while ( true )
+         { 
+            try {
+                    byte datos1[] = new byte[ 10000 ];
+                    DatagramPacket recibirPaquete1 = new DatagramPacket( datos1, datos1.length );
+                    servidor.receive( recibirPaquete1); 
+                    Consulta = new String ( recibirPaquete1.getData(), 0, recibirPaquete1.getLength() );
+
+ 
+                    byte datos2[] = new byte[ 10000 ];
+                    DatagramPacket recibirPaquete2 = new DatagramPacket( datos2, datos2.length );
+                    servidor.receive( recibirPaquete2); 
+                    Consulta2 = new String(recibirPaquete2.getData(), 0, recibirPaquete2.getLength());
+                    System.out.println(Consulta2);
+ 
+  
+                    byte datos3[] = new byte[ 1000 ];
+                    DatagramPacket recibirPaquete3 = new DatagramPacket( datos3, datos3.length );
+                    servidor.receive( recibirPaquete3); 
+    
+                    enviarPaqueteACliente(recibirPaquete3);
+ 
+                }
+                    catch( IOException errorio )
+                    {
+                       System.out.print( errorio.toString() + "\n" );
+                     }
+        }   
+     } 
+
+   
+     private void enviarPaqueteACliente( DatagramPacket recibirPaquete3 ) throws IOException
+             {
+                 
+        
+        try { 
+            
+            String Bandera = new String ( recibirPaquete3.getData(), 0, recibirPaquete3.getLength() );  
+            
+           
+           
+            ConectarBD conexion=new ConectarBD(); 
+            Statement sentencia; 
+            
+            sentencia=conexion.getConexion().createStatement();
+            sentencia.executeQuery(Consulta);
+            sentencia.clearBatch();
+            
+
+            sentencia=conexion.getConexion().createStatement();
+            ResultSet resultado2=sentencia.executeQuery(Consulta2);
+            sentencia.clearBatch();
+            
+            
+            conexion.getConexion().close();
+        
+           
+            
+            String mensaje ="  ";
+            System.out.printf(mensaje);
+            
+
+       
+            byte datos[] = mensaje.getBytes();
+ 
+
+            DatagramPacket enviarPaquete = new DatagramPacket( datos,datos.length, 5000);
+            servidor.send( enviarPaquete ); 
+           
+            
+       
+            } 
+             catch(SQLException e ) 
+                { 
+                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
+                    ,JOptionPane.INFORMATION_MESSAGE); 
+                } 
+                    catch(Exception e) 
+                       { 
+                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
+                        ,JOptionPane.INFORMATION_MESSAGE); 
+                       }
+        
+
+            System.out.print( "Paquete enviado\n" );
     }
     
     /**
