@@ -179,6 +179,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     
+    // SOCKETS 
+    
      private DatagramSocket servidor;
      String Consulta, Consulta2;
     
@@ -283,7 +285,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jDialog_Bici = new javax.swing.JDialog();
         btn_verBicis = new javax.swing.JButton();
-        btn_reservarBicis = new javax.swing.JButton();
         jDialog_Conductores = new javax.swing.JDialog();
         btn_verConductores = new javax.swing.JButton();
         btn_OpcionesConductor = new javax.swing.JButton();
@@ -295,7 +296,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jDialog_Transfers = new javax.swing.JDialog();
         btn_verTransfers = new javax.swing.JButton();
-        btn_reservarTransfer = new javax.swing.JButton();
         jDialog_Clientes = new javax.swing.JDialog();
         btn_verClientes = new javax.swing.JButton();
         JDOpcionesConductores = new javax.swing.JDialog();
@@ -388,27 +388,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtUbicacion = new javax.swing.JTextField();
         btnCargarBus = new javax.swing.JLabel();
         btn_volverAtrasBus = new javax.swing.JButton();
-        JDReservarBicicleta = new javax.swing.JDialog();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        txtCedulaClienteBicicleta = new javax.swing.JTextField();
-        txtNombreClienteBicicleta = new javax.swing.JTextField();
-        txtDireccionClienteBicicleta = new javax.swing.JTextField();
-        txtTelefonoClienteBicicleta = new javax.swing.JTextField();
-        txtCorreoClienteBicicleta = new javax.swing.JTextField();
-        cmbEstadoClienteBicicleta = new javax.swing.JComboBox();
-        jLabel36 = new javax.swing.JLabel();
-        cmbIdBicicletaReserva = new javax.swing.JComboBox();
-        btnReservarBicicleta = new javax.swing.JButton();
-        jLabel37 = new javax.swing.JLabel();
-        cmbNombreEstacionReservaBici = new javax.swing.JComboBox();
-        jSeparator4 = new javax.swing.JSeparator();
         panel_logo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -448,32 +427,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_reservarBicis.setText("Reservar bicicleta");
-        btn_reservarBicis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reservarBicisActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jDialog_BiciLayout = new javax.swing.GroupLayout(jDialog_Bici.getContentPane());
         jDialog_Bici.getContentPane().setLayout(jDialog_BiciLayout);
         jDialog_BiciLayout.setHorizontalGroup(
             jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog_BiciLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_verBicis, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(btn_reservarBicis, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                .addComponent(btn_verBicis, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jDialog_BiciLayout.setVerticalGroup(
             jDialog_BiciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog_BiciLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog_BiciLayout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(btn_verBicis, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_reservarBicis, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         jDialog_Conductores.setTitle("Conductores");
@@ -596,32 +564,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_reservarTransfer.setText("Reservar transfer");
-        btn_reservarTransfer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reservarTransferActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jDialog_TransfersLayout = new javax.swing.GroupLayout(jDialog_Transfers.getContentPane());
         jDialog_Transfers.getContentPane().setLayout(jDialog_TransfersLayout);
         jDialog_TransfersLayout.setHorizontalGroup(
             jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog_TransfersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_verTransfers, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(btn_reservarTransfer, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                .addComponent(btn_verTransfers, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jDialog_TransfersLayout.setVerticalGroup(
             jDialog_TransfersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog_TransfersLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog_TransfersLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(btn_verTransfers, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_reservarTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         jDialog_Clientes.setTitle("Clientes");
@@ -1450,136 +1407,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        JDReservarBicicleta.setTitle("Reservar bici-ágil");
-        JDReservarBicicleta.setMinimumSize(new java.awt.Dimension(650, 500));
-
-        jLabel28.setText("Reserva de bici-ágil");
-
-        jLabel29.setText("Datos del cliente");
-
-        jLabel30.setText("Cedula:");
-
-        jLabel31.setText("Nombre:");
-
-        jLabel32.setText("Direccion:");
-
-        jLabel33.setText("Telefono:");
-
-        jLabel34.setText("Correo:");
-
-        jLabel35.setText("Estado:");
-
-        cmbEstadoClienteBicicleta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Ocupado" }));
-
-        jLabel36.setText("Id Bicicleta disponible:");
-
-        btnReservarBicicleta.setText("Reservar");
-        btnReservarBicicleta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReservarBicicletaActionPerformed(evt);
-            }
-        });
-
-        jLabel37.setText("Seleccione la estacion");
-
-        javax.swing.GroupLayout JDReservarBicicletaLayout = new javax.swing.GroupLayout(JDReservarBicicleta.getContentPane());
-        JDReservarBicicleta.getContentPane().setLayout(JDReservarBicicletaLayout);
-        JDReservarBicicletaLayout.setHorizontalGroup(
-            JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDReservarBicicletaLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JDReservarBicicletaLayout.createSequentialGroup()
-                        .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel30)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel35))
-                        .addGap(47, 47, 47)
-                        .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCedulaClienteBicicleta)
-                            .addComponent(txtNombreClienteBicicleta)
-                            .addComponent(txtDireccionClienteBicicleta)
-                            .addComponent(txtTelefonoClienteBicicleta)
-                            .addComponent(txtCorreoClienteBicicleta)
-                            .addComponent(cmbEstadoClienteBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReservarBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDReservarBicicletaLayout.createSequentialGroup()
-                        .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel36)
-                            .addComponent(cmbIdBicicletaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cmbNombreEstacionReservaBici, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(43, 43, 43)))
-                .addGap(80, 80, 80))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDReservarBicicletaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel28)
-                .addGap(258, 258, 258))
-            .addGroup(JDReservarBicicletaLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        JDReservarBicicletaLayout.setVerticalGroup(
-            JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDReservarBicicletaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDReservarBicicletaLayout.createSequentialGroup()
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDReservarBicicletaLayout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addGap(91, 91, 91)))
-                .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDReservarBicicletaLayout.createSequentialGroup()
-                        .addComponent(txtCedulaClienteBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(txtNombreClienteBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(txtDireccionClienteBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(txtTelefonoClienteBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(txtCorreoClienteBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(cmbEstadoClienteBicicleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDReservarBicicletaLayout.createSequentialGroup()
-                        .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(JDReservarBicicletaLayout.createSequentialGroup()
-                                .addComponent(jLabel30)
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel31)
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel32)
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel33))
-                            .addGroup(JDReservarBicicletaLayout.createSequentialGroup()
-                                .addComponent(jLabel37)
-                                .addGap(21, 21, 21)
-                                .addComponent(cmbNombreEstacionReservaBici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)
-                                .addComponent(jLabel36)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbIdBicicletaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel34)
-                        .addGap(29, 29, 29)
-                        .addGroup(JDReservarBicicletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnReservarBicicleta)
-                            .addComponent(jLabel35))))
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home - Módulo Administrador");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -2357,43 +2184,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEliminarBicicletaActionPerformed
 
-    private void btn_reservarBicisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reservarBicisActionPerformed
-        this.jDialog_Bici.setVisible(false);
-        this.JDReservarBicicleta.setVisible(true);
-
-        try {
-
-            ConectarBD conexion = new ConectarBD();
-            Statement sentencia;
-            sentencia = conexion.getConexion().createStatement();
-            ResultSet resultado = sentencia.executeQuery("select NOMBRE from ESTACION");
-
-            while (resultado.next()) {
-                this.cmbNombreEstacionReservaBici.addItem("" + resultado.getString("NOMBRE"));
-            }
-
-            Statement sentencia2;
-            sentencia2 = conexion.getConexion().createStatement();
-            ResultSet resultado2 = sentencia.executeQuery("select BICICLETA_ID from BICICLETA");
-
-            while (resultado.next()) {
-                this.cmbIdBicicletaReserva.addItem("" + resultado.getString("BICICLETA_ID"));
-            }
-
-            resultado.close();
-            resultado2.close();
-            conexion.getConexion().close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
-
-        }
-
-
-    }//GEN-LAST:event_btn_reservarBicisActionPerformed
-
     private void btnEliminarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarBusActionPerformed
         int seleccion = JOptionPane.showOptionDialog(JDListadoBuses, "¿Esta seguro de eliminar este registro?(Si/No)", "Seleccione una opción",
                 JOptionPane.YES_NO_CANCEL_OPTION,
@@ -2476,10 +2266,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.JDListadoBuses.setVisible(false);
         this.jDialog_Buses.setVisible(true);
     }//GEN-LAST:event_btn_volverAtrasBusActionPerformed
-
-    private void btn_reservarTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reservarTransferActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_reservarTransferActionPerformed
 
     private void btn_volverAtrasBiciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverAtrasBiciActionPerformed
         this.jDialog_Bici.setVisible(true);
@@ -2572,10 +2358,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.jDialog_Transfers.setVisible(false);
         this.JDListadoTransfers.setVisible(true);
     }//GEN-LAST:event_btn_verTransfersActionPerformed
-
-    private void btnReservarBicicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarBicicletaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReservarBicicletaActionPerformed
 
     private void btnCargarBusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarBusMouseClicked
         try {
@@ -2707,7 +2489,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog JDListadoConductores;
     private javax.swing.JDialog JDListadoTransfers;
     private javax.swing.JDialog JDOpcionesConductores;
-    private javax.swing.JDialog JDReservarBicicleta;
     private javax.swing.JTable ListaBicicletas;
     private javax.swing.JTable ListaBuses;
     private javax.swing.JTable ListaDeClientes;
@@ -2730,15 +2511,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarBus;
     private javax.swing.JButton btnRegistrarConductor;
     private javax.swing.JButton btnRegistrarTransfer;
-    private javax.swing.JButton btnReservarBicicleta;
     private javax.swing.JButton btnSalirListadoDeClientes;
     private javax.swing.JButton btnSalirListadoDeConductores;
     private javax.swing.JButton btnVerBicicletas;
     private javax.swing.JButton btnVerBuses;
     private javax.swing.JButton btnVerTransfers;
     private javax.swing.JButton btn_OpcionesConductor;
-    private javax.swing.JButton btn_reservarBicis;
-    private javax.swing.JButton btn_reservarTransfer;
     private javax.swing.JButton btn_verBicis;
     private javax.swing.JButton btn_verBuses;
     private javax.swing.JButton btn_verClientes;
@@ -2752,11 +2530,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_volverAtrasTransfer;
     private javax.swing.JComboBox cmbEstadoBicicleta;
     private javax.swing.JComboBox cmbEstadoBus;
-    private javax.swing.JComboBox cmbEstadoClienteBicicleta;
     private javax.swing.JComboBox cmbEstadoTransfer;
-    private javax.swing.JComboBox cmbIdBicicletaReserva;
     private javax.swing.JComboBox cmbNombreEstacionBicicletas;
-    private javax.swing.JComboBox cmbNombreEstacionReservaBici;
     private javax.swing.JDialog jDialog_Bici;
     private javax.swing.JDialog jDialog_Buses;
     private javax.swing.JDialog jDialog_Clientes;
@@ -2782,17 +2557,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -2825,7 +2590,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel label_correo;
     private javax.swing.JLabel label_nombre;
     private javax.swing.JLabel label_username;
@@ -2836,11 +2600,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panel_datos;
     private javax.swing.JPanel panel_logo;
     private javax.swing.JPanel panel_transfers;
-    private javax.swing.JTextField txtCedulaClienteBicicleta;
     private javax.swing.JTextField txtCedulaConductor;
     private javax.swing.JTextField txtContrasenaConductor;
-    private javax.swing.JTextField txtCorreoClienteBicicleta;
-    private javax.swing.JTextField txtDireccionClienteBicicleta;
     private javax.swing.JTextField txtDireccionConductor;
     private javax.swing.JTextField txtEdadConductor;
     private javax.swing.JTextField txtEstadoConductor;
@@ -2850,9 +2611,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdTransfer;
     private javax.swing.JTextField txtMatriculaBus;
     private javax.swing.JTextField txtMatriculaTransfer;
-    private javax.swing.JTextField txtNombreClienteBicicleta;
     private javax.swing.JTextField txtNombreConductor;
-    private javax.swing.JTextField txtTelefonoClienteBicicleta;
     private javax.swing.JTextField txtTelefonoConductor;
     private javax.swing.JTextField txtUbicacion;
     private javax.swing.JTextField txtUbicacionTransfer;
