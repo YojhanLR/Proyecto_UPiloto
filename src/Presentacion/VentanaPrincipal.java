@@ -9,6 +9,8 @@ import Logica.Bicicleta;
 import Logica.Bus;
 import Logica.Conductor;
 import Logica.ConectarBD;
+import Logica.PosicionBus;
+import Logica.Ruta;
 import Logica.Transfer;
 import java.awt.Color;
 import java.sql.ResultSet;
@@ -29,17 +31,138 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Bicicleta objBici = new Bicicleta();
     Bus objBus = new Bus();
     Transfer objTra = new Transfer();
+    PosicionBus posBus;
+    public VentanaRuta vRuta;
+    
+    public ArrayList<Bus> buses = new ArrayList<>();
+    public ArrayList<Ruta> rutas = new ArrayList<>();
+    public ArrayList<Conductor> conductores = new ArrayList<>();
 
     /**
      * Creates new form VentanaPrincipal
      */
-    public static ArrayList<Bus> buses = new ArrayList<>();
 
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
+        initThreads();
+    }
+    
+    private void initThreads(){
+        //Por recomendaciones un Hilo no se debe iniciar en un constructor.
+        obtenerRutas();
+        actualizarListaBuses();
+        actualizarListaConductores();
+        
+        posBus = new PosicionBus(this);
+        posBus.start();
+        
+    }
+    
+    public void actualizarListaBuses(){
+         try {
+            ConectarBD conexion = new ConectarBD();
+            Statement sentencia;
+
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("select * from BUS");
+            
+            if (!resultado.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "No se encontraron registros.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            while (resultado.next()) {
+                int id = resultado.getInt("BUS_ID");
+                String estado = resultado.getString("ESTADO");
+                String matricula = resultado.getString("MATRICULA");
+                String ubicacion = resultado.getString("UBICACION");
+                
+                Bus temp = new Bus(id,estado,matricula,ubicacion);
+                buses.add(temp);
+            }
+
+            resultado.close();
+            conexion.getConexion().close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
+    public void actualizarListaConductores(){
+        try {
+            ConectarBD conexion = new ConectarBD();
+            Statement sentencia;
+
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("select * from CONDUCTOR");
+            
+            if (!resultado.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "No se encontraron registros.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            while (resultado.next()) {
+                int id = resultado.getInt("CONDUCTOR_ID");
+                long cedula = resultado.getLong("CEDULA");
+                String nombre = resultado.getString("NOMBRE");
+                int edad = resultado.getInt("EDAD");
+                long telefono = resultado.getLong("TELEFONO");
+                String direccion = resultado.getString("DIRECCION");
+                String cont = resultado.getString("CONTRASEÑA");
+                String estado = resultado.getString("ESTADO");
+                
+                
+                Conductor temp = new Conductor(id,cedula,nombre,edad,telefono,direccion,cont,estado);
+                conductores.add(temp);
+            }
+
+            resultado.close();
+            conexion.getConexion().close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void obtenerRutas(){
+        try {
+            ConectarBD conexion = new ConectarBD();
+            Statement sentencia;
+
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado = sentencia.executeQuery("select * from RUTA");
+            
+            if (!resultado.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "No se encontraron registros.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            while (resultado.next()) {
+                int id = resultado.getInt("RUTA_ID");
+                float kilometros = resultado.getFloat("KILOMETROS");
+                String nombre = resultado.getString("NOMBRE");
+                
+                
+                Ruta temp = new Ruta(id,kilometros,nombre);
+                rutas.add(temp);
+            }
+
+            resultado.close();
+            conexion.getConexion().close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1885,20 +2008,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btn_verRutaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaAActionPerformed
         jDialog_Buses.setVisible(false);
-        VentanaRuta vr = new VentanaRuta("A");
-        vr.setVisible(true);
+        vRuta = new VentanaRuta("A");
+        vRuta.setVisible(true);
     }//GEN-LAST:event_btn_verRutaAActionPerformed
 
     private void btn_verRutaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaBActionPerformed
         jDialog_Buses.setVisible(false);
-        VentanaRuta vr = new VentanaRuta("B");
-        vr.setVisible(true);
+        vRuta = new VentanaRuta("B");
+        vRuta.setVisible(true);
     }//GEN-LAST:event_btn_verRutaBActionPerformed
 
     private void btn_verRutaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verRutaCActionPerformed
         jDialog_Buses.setVisible(false);
-        VentanaRuta vr = new VentanaRuta("C");
-        vr.setVisible(true);
+        vRuta = new VentanaRuta("C");
+        vRuta.setVisible(true);
     }//GEN-LAST:event_btn_verRutaCActionPerformed
 
     private void btn_verClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verClientesActionPerformed

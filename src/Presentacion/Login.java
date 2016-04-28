@@ -7,11 +7,10 @@ package Presentacion;
 
 import Logica.ConectarBD;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.codec.digest.DigestUtils; //Paquete encriptación MD5
 
 /**
  *
@@ -126,7 +125,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        
+
         char claves[] = tf_password.getPassword();
         String password = new String(claves);
         String username = tf_usuario.getText();
@@ -137,34 +136,34 @@ public class Login extends javax.swing.JFrame {
             String encrypted = DigestUtils.md5Hex(password); //Convierte la contraseña a encriptación MD5
             //System.out.println(password);
             //System.out.println(encrypted);
-            
+
             ConectarBD conexion = new ConectarBD();
             Statement sentencia;
 
             try {
                 sentencia = conexion.getConexion().createStatement();
-                ResultSet resultado = sentencia.executeQuery("SELECT PASSWORD FROM ADMINISTRADOR WHERE USERNAME = '"+username+"'");
+                ResultSet resultado = sentencia.executeQuery("SELECT PASSWORD FROM ADMINISTRADOR WHERE USERNAME = '" + username + "'");
                 resultado.next();
                 String passwordReal = resultado.getNString(1);
-                
+
                 resultado.close();
                 conexion.getConexion().close();
-                
-                if(encrypted.equals(passwordReal)){
-                    JOptionPane.showMessageDialog(this, "¡Bienvenido "+username+"!", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+                if (encrypted.equals(passwordReal)) {
+                    JOptionPane.showMessageDialog(this, "¡Bienvenido " + username + "!", "Información", JOptionPane.INFORMATION_MESSAGE);
                     VentanaPrincipal vp = new VentanaPrincipal();
                     this.setVisible(false);
                     vp.setVisible(true);
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Por favor verifique su usuario y contraseña e intente de nuevo.", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(this, "Por favor verifique su usuario y contraseña e intente de nuevo.", "Información", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            }
         }
     }//GEN-LAST:event_btn_loginActionPerformed
-
+    
+    
     /**
      * @param args the command line arguments
      */

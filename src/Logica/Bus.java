@@ -13,6 +13,21 @@ import javax.swing.JOptionPane;
  * @author Yojhan
  */
 public class Bus {
+
+    private int id;
+    private String estado;
+    private String matricula;
+    private String ubicacion;
+    
+    public Bus(){
+    }
+    
+    public Bus(int id, String estado, String matricula, String ubicacion){
+         this.id = id;
+         this.estado = estado;
+         this.matricula = matricula;
+         this.ubicacion = ubicacion;
+    }
     
     public void guardarBus(int id, String estado, String matricula, String ubicacion) {
 
@@ -90,5 +105,37 @@ public class Bus {
                     JOptionPane.WARNING_MESSAGE);
         }
 
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 }

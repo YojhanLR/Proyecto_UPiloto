@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VentanaRuta extends javax.swing.JFrame {
     
-     private DefaultTableModel dtm; //Definicion modelo de tabla para manipulación
+     public DefaultTableModel dtm; //Definicion modelo de tabla para manipulación
      
     /**
      * Creates new form VentanaRuta

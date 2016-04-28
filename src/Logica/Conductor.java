@@ -13,7 +13,31 @@ import javax.swing.JOptionPane;
  * @author HECTOR
  */
 public class Conductor {
-
+    
+    private int id;
+    private long cedula;
+    private String nombre;
+    private int edad;
+    private long telefono;
+    private String dir;
+    private String cont;
+    private String estado;
+    
+    
+    public Conductor(){
+    }
+    
+    public Conductor(int id, long cedula, String nombre, int edad, long telefono, String dir, String cont, String estado){
+        this.id = id;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.telefono = telefono;
+        this.dir = dir;
+        this.cont = cont;
+        this.estado = estado;
+    }
+    
     public void guardarCond(String a, String b, String c, String d, String e, String f, String g, String h) {
 
         try {
@@ -119,4 +143,37 @@ public class Conductor {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public long getCedula() {
+        return cedula;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public long getTelefono() {
+        return telefono;
+    }
+
+    public String getDir() {
+        return dir;
+    }
+
+    public String getCont() {
+        return cont;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    
 }
