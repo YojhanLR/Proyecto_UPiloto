@@ -37,7 +37,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Transfer objTra = new Transfer();
     PosicionBus posBus;
     public VentanaRuta vRuta;
-    
+
     public ArrayList<Bus> buses = new ArrayList<>();
     public ArrayList<Ruta> rutas = new ArrayList<>();
     public ArrayList<Conductor> conductores = new ArrayList<>();
@@ -45,53 +45,50 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); //Ubica ventana en la mitad de la pantalla
         initThreads();
-        
+
         try {
-                servidor= new DatagramSocket( 5000 );
-            }
-            catch( SocketException errorSocket )
-            {
-                JOptionPane.showMessageDialog( null, "Error en el Socket"+errorSocket,
-                    "Información", JOptionPane.PLAIN_MESSAGE );
-                System.exit( 1 );
-            }
+            servidor = new DatagramSocket(5000);
+        } catch (SocketException errorSocket) {
+            JOptionPane.showMessageDialog(null, "Error en el Socket" + errorSocket,
+                    "Información", JOptionPane.PLAIN_MESSAGE);
+            System.exit(1);
+        }
     }
-    
-    private void initThreads(){
+
+    private void initThreads() {
         //Por recomendaciones un Hilo no se debe iniciar en un constructor.
         obtenerRutas();
         actualizarListaBuses();
         actualizarListaConductores();
-        
+
         posBus = new PosicionBus(this);
         posBus.start();
-        
+
     }
-    
-    public void actualizarListaBuses(){
-         try {
+
+    public void actualizarListaBuses() {
+        try {
             ConectarBD conexion = new ConectarBD();
             Statement sentencia;
 
             sentencia = conexion.getConexion().createStatement();
             ResultSet resultado = sentencia.executeQuery("select * from BUS");
-            
+
             if (!resultado.isBeforeFirst()) {
                 JOptionPane.showMessageDialog(null, "No se encontraron registros.", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
-            
+
             while (resultado.next()) {
                 int id = resultado.getInt("BUS_ID");
                 String estado = resultado.getString("ESTADO");
                 String matricula = resultado.getString("MATRICULA");
                 String ubicacion = resultado.getString("UBICACION");
-                
-                Bus temp = new Bus(id,estado,matricula,ubicacion);
+
+                Bus temp = new Bus(id, estado, matricula, ubicacion);
                 buses.add(temp);
             }
 
@@ -106,18 +103,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }
 
-    public void actualizarListaConductores(){
+    public void actualizarListaConductores() {
         try {
             ConectarBD conexion = new ConectarBD();
             Statement sentencia;
 
             sentencia = conexion.getConexion().createStatement();
             ResultSet resultado = sentencia.executeQuery("select * from CONDUCTOR");
-            
+
             if (!resultado.isBeforeFirst()) {
                 JOptionPane.showMessageDialog(null, "No se encontraron registros.", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
-            
+
             while (resultado.next()) {
                 int id = resultado.getInt("CONDUCTOR_ID");
                 long cedula = resultado.getLong("CEDULA");
@@ -127,9 +124,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 String direccion = resultado.getString("DIRECCION");
                 String cont = resultado.getString("CONTRASEÑA");
                 String estado = resultado.getString("ESTADO");
-                
-                
-                Conductor temp = new Conductor(id,cedula,nombre,edad,telefono,direccion,cont,estado);
+
+                Conductor temp = new Conductor(id, cedula, nombre, edad, telefono, direccion, cont, estado);
                 conductores.add(temp);
             }
 
@@ -143,26 +139,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
-    public void obtenerRutas(){
+
+    public void obtenerRutas() {
         try {
             ConectarBD conexion = new ConectarBD();
             Statement sentencia;
 
             sentencia = conexion.getConexion().createStatement();
             ResultSet resultado = sentencia.executeQuery("select * from RUTA");
-            
+
             if (!resultado.isBeforeFirst()) {
                 JOptionPane.showMessageDialog(null, "No se encontraron registros.", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
-            
+
             while (resultado.next()) {
                 int id = resultado.getInt("RUTA_ID");
                 float kilometros = resultado.getFloat("KILOMETROS");
                 String nombre = resultado.getString("NOMBRE");
-                
-                
-                Ruta temp = new Ruta(id,kilometros,nombre);
+
+                Ruta temp = new Ruta(id, kilometros, nombre);
                 rutas.add(temp);
             }
 
@@ -176,104 +171,73 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(JDOpcionesConductores, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
-    
-    
+
     // SOCKETS 
-    
-     private DatagramSocket servidor;
-     String Consulta, Consulta2;
-    
-    
-     public void esperarPaquetes()
-    {
-        while ( true )
-         { 
+    private DatagramSocket servidor;
+    String Consulta, Consulta2;
+
+    public void esperarPaquetes() {
+        while (true) {
             try {
-                    byte datos1[] = new byte[ 10000 ];
-                    DatagramPacket recibirPaquete1 = new DatagramPacket( datos1, datos1.length );
-                    servidor.receive( recibirPaquete1); 
-                    Consulta = new String ( recibirPaquete1.getData(), 0, recibirPaquete1.getLength() );
+                byte datos1[] = new byte[10000];
+                DatagramPacket recibirPaquete1 = new DatagramPacket(datos1, datos1.length);
+                servidor.receive(recibirPaquete1);
+                Consulta = new String(recibirPaquete1.getData(), 0, recibirPaquete1.getLength());
 
- 
-                    byte datos2[] = new byte[ 10000 ];
-                    DatagramPacket recibirPaquete2 = new DatagramPacket( datos2, datos2.length );
-                    servidor.receive( recibirPaquete2); 
-                    Consulta2 = new String(recibirPaquete2.getData(), 0, recibirPaquete2.getLength());
-                    System.out.println(Consulta2);
- 
-  
-                    byte datos3[] = new byte[ 1000 ];
-                    DatagramPacket recibirPaquete3 = new DatagramPacket( datos3, datos3.length );
-                    servidor.receive( recibirPaquete3); 
-    
-                    enviarPaqueteACliente(recibirPaquete3);
- 
-                }
-                    catch( IOException errorio )
-                    {
-                       System.out.print( errorio.toString() + "\n" );
-                     }
-        }   
-     } 
+                byte datos2[] = new byte[10000];
+                DatagramPacket recibirPaquete2 = new DatagramPacket(datos2, datos2.length);
+                servidor.receive(recibirPaquete2);
+                Consulta2 = new String(recibirPaquete2.getData(), 0, recibirPaquete2.getLength());
+                System.out.println(Consulta2);
 
-   
-     private void enviarPaqueteACliente( DatagramPacket recibirPaquete3 ) throws IOException
-             {
-                 
-        
-        try { 
-            
-            String Bandera = new String ( recibirPaquete3.getData(), 0, recibirPaquete3.getLength() );  
-            
-           
-           
-            ConectarBD conexion=new ConectarBD(); 
-            Statement sentencia; 
-            
-            sentencia=conexion.getConexion().createStatement();
+                byte datos3[] = new byte[1000];
+                DatagramPacket recibirPaquete3 = new DatagramPacket(datos3, datos3.length);
+                servidor.receive(recibirPaquete3);
+
+                enviarPaqueteACliente(recibirPaquete3);
+
+            } catch (IOException errorio) {
+                System.out.print(errorio.toString() + "\n");
+            }
+        }
+    }
+
+    private void enviarPaqueteACliente(DatagramPacket recibirPaquete3) throws IOException {
+
+        try {
+
+            String Bandera = new String(recibirPaquete3.getData(), 0, recibirPaquete3.getLength());
+
+            ConectarBD conexion = new ConectarBD();
+            Statement sentencia;
+
+            sentencia = conexion.getConexion().createStatement();
             sentencia.executeQuery(Consulta);
             sentencia.clearBatch();
-            
 
-            sentencia=conexion.getConexion().createStatement();
-            ResultSet resultado2=sentencia.executeQuery(Consulta2);
+            sentencia = conexion.getConexion().createStatement();
+            ResultSet resultado2 = sentencia.executeQuery(Consulta2);
             sentencia.clearBatch();
-            
-            
+
             conexion.getConexion().close();
-        
-           
-            
-            String mensaje ="  ";
+
+            String mensaje = "  ";
             System.out.printf(mensaje);
-            
 
-       
             byte datos[] = mensaje.getBytes();
- 
 
-            DatagramPacket enviarPaquete = new DatagramPacket( datos,datos.length, 5000);
-            servidor.send( enviarPaquete ); 
-           
-            
-       
-            } 
-             catch(SQLException e ) 
-                { 
-                    JOptionPane.showMessageDialog(this,"Error SQL:"+e,"Información" 
-                    ,JOptionPane.INFORMATION_MESSAGE); 
-                } 
-                    catch(Exception e) 
-                       { 
-                        JOptionPane.showMessageDialog(this,"Error:"+e,"Información" 
-                        ,JOptionPane.INFORMATION_MESSAGE); 
-                       }
-        
+            DatagramPacket enviarPaquete = new DatagramPacket(datos, datos.length, 5000);
+            servidor.send(enviarPaquete);
 
-            System.out.print( "Paquete enviado\n" );
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error SQL:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error:" + e, "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        System.out.print("Paquete enviado\n");
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -2398,7 +2362,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarBusMouseClicked
 
     private void btnCargarTransferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarTransferMouseClicked
-       try {
+        try {
 
             ConectarBD conexion = new ConectarBD();
             Statement sentencia;
@@ -2454,13 +2418,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 } else {
                     cmbEstadoBicicleta.setSelectedItem("Reservada");
                 }
-                
+
 //                if (resultado.getString("ESTADO").equals("Libre")) {
 //                    cmbEstadoBicicleta.setSelectedItem("Libre");
 //                } else {
 //                    cmbEstadoBicicleta.setSelectedItem("Reservada");
 //                }
-
             }
 
             resultado.close();

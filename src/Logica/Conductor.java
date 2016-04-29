@@ -175,5 +175,11 @@ public class Conductor {
         return estado;
     }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
+
     
 }
